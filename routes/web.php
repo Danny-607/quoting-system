@@ -1,6 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\QuoteController;
+use App\Http\Controllers\ServicesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,4 +22,10 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [HomeController::class, 'index'])->name('home');
+
+Route::get('/services', [ServicesController::class, 'index'])->name('services.index');
+
+Route::get('/services/create', [ServicesController::class, 'create'])->name('services.create');
+
+Route::post('/services', [ServicesController::class, 'store'])->name('services.store');
