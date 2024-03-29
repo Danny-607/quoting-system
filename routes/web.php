@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\QuoteController;
 use App\Http\Controllers\ServicesController;
 
@@ -24,6 +25,10 @@ Auth::routes();
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
+// Admin routes
+Route::get('/dashboard/admin', [AdminController::class, 'index'])->name('admin.index');
+
+// Services routes
 Route::get('/services', [ServicesController::class, 'index'])->name('services.index');
 
 Route::get('/services/create', [ServicesController::class, 'create'])->name('services.create');

@@ -1,0 +1,48 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Sidebar navigation styling */
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 200px; /* Adjust width as needed */
+    background-color: #333; /* Change background color as needed */
+    padding-top: 60px; /* Adjust top padding for space for header */
+    text-align: center;
+}
+
+.sidebar ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.sidebar li {
+    padding: 10px;
+    color: white;
+    background-color: #555;
+    margin-top: 10px;
+}
+
+.sidebar a {
+    display: block;
+    color: #fff; /* Link color */
+    text-decoration: none;
+}
+
+/* Hover effect for the links */
+.sidebar a:hover {
+    background-color: #555; /* Change background color on hover */
+}
+
+/* Media query for responsiveness */
+@media (max-width: 768px) {
+    .sidebar {
+        width: 100%; /* Take full width on smaller screens */
+        padding-top: 10px; /* Adjust top padding for space for header */
+    }
+}
