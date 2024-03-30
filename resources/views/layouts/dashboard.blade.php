@@ -11,8 +11,8 @@
 <body>
     <nav class="sidebar">
         <ul>
-            <li>{{$username}}</li>
-            <li><a href="{{Route('services.create')}}">Create a service</a></li>
+            <li class="account">{{$username}}</li>
+            <li><a href="{{Route('services.create')}}">Services</a></li>
             <li>yes</li>
             <li>yes</li>
             <li>yes</li>
@@ -20,5 +20,9 @@
             <li>yes</li>
         </ul>
     </nav>
+
+    <main>
+        @yield('content')
+    </main>
 </body>
 </html>

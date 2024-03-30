@@ -20,4 +20,8 @@ class AdminController extends Controller
        
         
     }
+    // edit services
+    public function edit(){
+
+    }
 }

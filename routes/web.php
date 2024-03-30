@@ -28,6 +28,10 @@ Route::get('/home', [HomeController::class, 'index'])->name('home');
 // Admin routes
 Route::get('/dashboard/admin', [AdminController::class, 'index'])->name('admin.index');
 
+Route::get('/services/admin', [AdminController::class, 'index'])->name('admin.index');
+
+// Route::put('')
+
 // Services routes
 Route::get('/services', [ServicesController::class, 'index'])->name('services.index');
 

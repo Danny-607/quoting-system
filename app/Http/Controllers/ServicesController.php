@@ -4,12 +4,21 @@ namespace App\Http\Controllers;
 
 use App\Models\Service;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ServicesController extends Controller
 {
 
     public function index(){
-        return view('services.index');
+        $services = Service::all();
+        $user = Auth::user();
+
+        if ($user){
+            $username = $user->name;
+            return view('services.index', ['username'=> $username, 'services' => $services]);
+        } else{
+            return redirect()->route('login');
+        }
         
     }
     public function create(){

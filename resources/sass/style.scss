@@ -1,18 +1,25 @@
+$primary-color: #1f153d;
+$secondary-color: #a8a6b2;
+$accent-color: #0e9b73;
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: sans-serif;
 }
-
+body{
+    background-color: $primary-color;
+}
 /* Sidebar navigation styling */
 .sidebar {
     position: fixed;
     top: 0;
     left: 0;
     height: 100%;
-    width: 200px; /* Adjust width as needed */
-    background-color: #333; /* Change background color as needed */
-    padding-top: 60px; /* Adjust top padding for space for header */
+    width: 200px; 
+    background-color: darken($primary-color, 5%); 
+    padding-top: 60px; 
     text-align: center;
 }
 
@@ -20,13 +27,18 @@
     list-style-type: none;
     padding: 0;
 }
+.account{
+    background-color: $secondary-color;
+}
 
 .sidebar li {
     padding: 10px;
     color: white;
-    background-color: #555;
+    border-radius: 10px;
     margin-top: 10px;
+    font-size: 20px;
 }
+
 
 .sidebar a {
     display: block;
@@ -35,10 +47,12 @@
 }
 
 /* Hover effect for the links */
-.sidebar a:hover {
-    background-color: #555; /* Change background color on hover */
+.sidebar li:hover {
+    background-color:  lighten($primary-color, 30%); /* Change background color on hover */
+    
 }
 
+// table
 /* Media query for responsiveness */
 @media (max-width: 768px) {
     .sidebar {
