@@ -41,3 +41,4 @@ Route::post('/services', [ServicesController::class, 'store'])->name('services.s
 Route::get('/services/{service}/edit', [ServicesController::class, 'edit']) ->name('services.edit');
 
 Route::put('/services/{service}/update', [ServicesController::class, 'update'])->name('services.update');
+Route::delete('/services/{service}/delete', [ServicesController::class, 'destroy'])->name('services.destroy');

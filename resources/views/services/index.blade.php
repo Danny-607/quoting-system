@@ -15,6 +15,12 @@
         <td>{{$service->name}}</td>
         <td>{{$service->price}}</td>
         <td><a href="{{route('services.edit', ['service' => $service])}}">Edit</a></td>
+        <td>
+        <form method="post" action="{{route('services.destroy', ['service' => $service])}}" >
+            @csrf
+            @method('delete')
+            <input type="submit" value="Delete">
+        </form></td>
     </tr>
 @endforeach
 </table>

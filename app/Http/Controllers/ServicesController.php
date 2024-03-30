@@ -57,4 +57,11 @@ class ServicesController extends Controller
 
         return redirect(route('services.index'))->with('success', 'Service updated successfully');
     }
+
+    public function destroy(Service $service){
+        $service->delete();
+
+        return redirect(route('services.index'))->with('success', 'Service deleted successfully');
+
+    }
 }
