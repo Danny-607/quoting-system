@@ -35,4 +35,26 @@ class ServicesController extends Controller
 
         return redirect(route('services.index'));
     }
+
+    public function edit(Service $service){
+        $user = Auth::user();
+
+        if ($user){
+            $username = $user->name;
+            return view('services.edit', ['username'=> $username, 'service' => $service]);
+        } else{
+            return redirect()->route('login');
+        }
+
+    }
+    public function update(Service $service, Request $request){
+        $data = $request->validate([
+            'name' => 'required',
+            'price' => 'required|decimal:0,2',
+        ]);
+
+        $service->update($data);
+
+        return redirect(route('services.index'))->with('success', 'Service updated successfully');
+    }
 }

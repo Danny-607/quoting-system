@@ -30,7 +30,6 @@ Route::get('/dashboard/admin', [AdminController::class, 'index'])->name('admin.i
 
 Route::get('/services/admin', [AdminController::class, 'index'])->name('admin.index');
 
-// Route::put('')
 
 // Services routes
 Route::get('/services', [ServicesController::class, 'index'])->name('services.index');
@@ -38,3 +37,7 @@ Route::get('/services', [ServicesController::class, 'index'])->name('services.in
 Route::get('/services/create', [ServicesController::class, 'create'])->name('services.create');
 
 Route::post('/services', [ServicesController::class, 'store'])->name('services.store');
+
+Route::get('/services/{service}/edit', [ServicesController::class, 'edit']) ->name('services.edit');
+
+Route::put('/services/{service}/update', [ServicesController::class, 'update'])->name('services.update');

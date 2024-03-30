@@ -12,7 +12,7 @@
     <nav class="sidebar">
         <ul>
             <li class="account">{{$username}}</li>
-            <li><a href="{{Route('services.create')}}">Services</a></li>
+            <li><a href="{{Route('services.index')}}">Services</a></li>
             <li>yes</li>
             <li>yes</li>
             <li>yes</li>
