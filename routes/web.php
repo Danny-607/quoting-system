@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\QuoteController;
+use App\Http\Controllers\QuotesController;
 use App\Http\Controllers\ServicesController;
 
 /*
@@ -41,4 +42,13 @@ Route::post('/services', [ServicesController::class, 'store'])->name('services.s
 Route::get('/services/{service}/edit', [ServicesController::class, 'edit']) ->name('services.edit');
 
 Route::put('/services/{service}/update', [ServicesController::class, 'update'])->name('services.update');
+
 Route::delete('/services/{service}/delete', [ServicesController::class, 'destroy'])->name('services.destroy');
+
+// Quotes routes
+
+Route::get('/quotes', [QuotesController::class, 'index'])->name('quotes.index');
+
+Route::get('/quotes/create', [QuotesController::class, 'create'])->name('quotes.create');
+
+Route::post('/quotes', [QuotesController::class, 'store'])->name('quotes.store');

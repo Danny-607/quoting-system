@@ -27,5 +27,5 @@
 <p>@if (session()->has('success'))
     {{session('success')}}
 @endif</p>
-
+<a href="{{route('services.create')}}">Create a service</a>
 @endsection

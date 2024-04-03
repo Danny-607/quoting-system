@@ -13,7 +13,7 @@
         <ul>
             <li class="account">{{$username}}</li>
             <li><a href="{{Route('services.index')}}">Services</a></li>
-            <li>yes</li>
+            <li><a href="{{Route('quotes.index')}}">Quotes</a></li>
             <li>yes</li>
             <li>yes</li>
             <li>yes</li>

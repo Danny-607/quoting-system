@@ -9,7 +9,7 @@
     <label for="price">Price</label>
     <input type="text" name="price" id="service_name" value="{{$service->price}}">
 
-    <button type="submit" value="save">Update service</button>
+    <button type="submit" value="save" name="save">Update service</button>
 </form>
 
 @if($errors->any())

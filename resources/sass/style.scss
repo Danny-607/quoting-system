@@ -59,10 +59,18 @@ table{
     width: 100%;
     color: #fff;
     border: 2px solid white;
+    border-spacing: 0;
+    text-align: center;
+    border-collapse: collapse;
+
 }
 
-tr{
+th{
     border: 2px solid white;
+    margin: 0;
+}
+td{
+    border: 2px solid white ;
 }
 /* Media query for responsiveness */
 @media (max-width: 768px) {
