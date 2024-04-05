@@ -6,7 +6,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\QuoteController;
 use App\Http\Controllers\QuotesController;
 use App\Http\Controllers\ServicesController;
-
+use Spatie\Permission\Models\Role;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -27,23 +27,23 @@ Auth::routes();
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 // Admin routes
-Route::get('/dashboard/admin', [AdminController::class, 'index'])->name('admin.index');
+Route::get('/dashboard/admin', [AdminController::class, 'index'])->middleware(['auth','role:admin'])->name('admin.index');
 
-Route::get('/services/admin', [AdminController::class, 'index'])->name('admin.index');
+Route::get('/services/admin', [AdminController::class, 'index'])->middleware(['auth', 'role:admin|manager'])->name('admin.index');
 
 
 // Services routes
 Route::get('/services', [ServicesController::class, 'index'])->name('services.index');
 
-Route::get('/services/create', [ServicesController::class, 'create'])->name('services.create');
+Route::get('/services/create', [ServicesController::class, 'create'])->middleware(['auth', 'role:admin|manager'])->name('services.create');
 
-Route::post('/services', [ServicesController::class, 'store'])->name('services.store');
+Route::post('/services', [ServicesController::class, 'store'])->middleware(['auth', 'role:admin|manager'])->name('services.store');
 
-Route::get('/services/{service}/edit', [ServicesController::class, 'edit']) ->name('services.edit');
+Route::get('/services/{service}/edit', [ServicesController::class, 'edit'])->middleware(['auth', 'role:admin|manager'])->name('services.edit');
 
-Route::put('/services/{service}/update', [ServicesController::class, 'update'])->name('services.update');
+Route::put('/services/{service}/update', [ServicesController::class, 'update'])->middleware(['auth', 'role:admin|manager'])->name('services.update');
 
-Route::delete('/services/{service}/delete', [ServicesController::class, 'destroy'])->name('services.destroy');
+Route::delete('/services/{service}/delete', [ServicesController::class, 'destroy'])->middleware(['auth', 'role:admin|manager'])->name('services.destroy');
 
 // Quotes routes
 
