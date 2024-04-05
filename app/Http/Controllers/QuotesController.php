@@ -13,7 +13,15 @@ class QuotesController extends Controller
 {
 
     public function index(){
-        return view('quotes.index');
+        $services = Service::all();
+        $user = Auth::user();
+        $quotes = Quote::with('services', 'user')->get();
+        if ($user) {
+            $username = $user->name;
+            return view('quotes.index', compact('quotes', 'username'));
+        } else {
+            return redirect()->route('login');
+        }
     }
     
     public function create()
@@ -61,6 +69,18 @@ class QuotesController extends Controller
             ]);
         }
 
+    }
+
+    public function accept(Quote $quote)
+    {
+        $quote->update(['approved' => 'yes']);
+        return redirect()->route('quotes.index');
+    }
+
+    public function destroy(Quote $quote)
+    {
+        $quote->delete();
+        return redirect()->route('quotes.index');
     }
     
 }

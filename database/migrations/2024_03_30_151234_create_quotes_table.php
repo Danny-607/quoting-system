@@ -17,7 +17,7 @@ return new class extends Migration
             $table->foreign('user_id')
             ->references('id')->on('users')
             ->onDelete('cascade');
-            $table->string('description');
+            $table->longText('description');
             $table->integer('preliminary_price');
             $table->string('approved');
             $table->timestamps();

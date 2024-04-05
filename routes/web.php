@@ -52,3 +52,7 @@ Route::get('/quotes', [QuotesController::class, 'index'])->name('quotes.index');
 Route::get('/quotes/create', [QuotesController::class, 'create'])->name('quotes.create');
 
 Route::post('/quotes', [QuotesController::class, 'store'])->name('quotes.store');
+
+Route::put('/quotes/{quote}/accept', [QuotesController::class, 'accept'])->middleware(['auth', 'role:admin|manager'])->name('quotes.accept');
+
+Route::delete('quotes/{quote}/delete', [QuotesController::class, 'destroy'])->middleware(['auth', 'role:admin|manager'])->name('quotes.destroy');

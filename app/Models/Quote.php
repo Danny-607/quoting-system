@@ -16,6 +16,6 @@ class Quote extends Model
         return $this->belongsTo(User::class);
     }
     public function services(){
-        return $this->belongsToMany(Services::class);
+        return $this->belongsToMany(Service::class, 'quote_services');
     }
 }
