@@ -1,12 +1,13 @@
 <?php
 
+use Spatie\Permission\Models\Role;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\QuoteController;
 use App\Http\Controllers\QuotesController;
+use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\ServicesController;
-use Spatie\Permission\Models\Role;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -56,3 +57,17 @@ Route::post('/quotes', [QuotesController::class, 'store'])->name('quotes.store')
 Route::put('/quotes/{quote}/accept', [QuotesController::class, 'accept'])->middleware(['auth', 'role:admin|manager'])->name('quotes.accept');
 
 Route::delete('quotes/{quote}/delete', [QuotesController::class, 'destroy'])->middleware(['auth', 'role:admin|manager'])->name('quotes.destroy');
+
+// Employee Routes
+
+Route::get('/employees', [EmployeeController::class, 'index'])->name('employees.index');
+
+Route::get('/employees/create', [EmployeeController::class, 'create'])->name('employees.create');
+
+Route::post('/employees', [EmployeeController::class, 'store'])->name('employees.store');
+
+Route::get('/employees/{employee}/edit', [EmployeeController::class, 'edit'])->name('employees.edit');
+
+Route::put('/employees/{employee}', [EmployeeController::class, 'update'])->name('employees.update');
+
+Route::delete('/employees/{employee}/delete', [EmployeeController::class, 'destroy'])->name('employees.destroy');
