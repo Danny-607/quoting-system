@@ -13,13 +13,12 @@ return new class extends Migration
     {
         Schema::create('running_costs', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('catagory_id');
-            $table->foreign('catagory_id')
-            ->references('id')->on('catagories')
+            $table->unsignedBigInteger('category_id');
+            $table->foreign('category_id')
+            ->references('id')->on('categories')
             ->onDelete('cascade');
             $table->string('name');
             $table->decimal('cost');
-            $table->string('type');
             $table->date('date_incurred');
             $table->boolean('repeating')->default(false);
             $table->timestamps();

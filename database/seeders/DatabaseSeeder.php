@@ -17,5 +17,7 @@ class DatabaseSeeder extends Seeder
         $this->call(ManagerSeeder::class);
         $this->call(ServicesSeeder::class);
         $this->call(QuoteSeeder::class);
+        $this->call(CategorySeeder::class);
+        $this->call(RunningCostsSeeder::class);
     }
 }
