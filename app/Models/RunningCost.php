@@ -2,16 +2,17 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Category;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class RunningCost extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['catagory_id', 'name', 'cost', 'type', 'date_incurred', 'reapting'];
+    protected $fillable = ['category_id', 'name', 'cost', 'date_incurred', 'repeating'];
     
-    public function catagory(){
-        return $this->belongsTo(Catagory::class);
+    public function category(){
+        return $this->belongsTo(Category::class);
     }
 }

@@ -1,5 +1,6 @@
 <?php
 
+
 use Spatie\Permission\Models\Role;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
@@ -8,6 +9,7 @@ use App\Http\Controllers\QuoteController;
 use App\Http\Controllers\QuotesController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\ServicesController;
+use App\Http\Controllers\RunningCostsController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -71,3 +73,16 @@ Route::get('/employees/{employee}/edit', [EmployeeController::class, 'edit'])->n
 Route::put('/employees/{employee}', [EmployeeController::class, 'update'])->name('employees.update');
 
 Route::delete('/employees/{employee}/delete', [EmployeeController::class, 'destroy'])->name('employees.destroy');
+
+// Running Costs Routes
+Route::get('/runningcosts', [RunningCostsController::class, 'index'])->name('runningcosts.index');
+
+Route::get('/runningcosts/create', [RunningCostsController::class, 'create'])->name('runningcosts.create');
+
+Route::post('/runningcosts', [RunningCostsController::class, 'store'])->name('runningcosts.store');
+
+Route::put('/runningcosts/{runningcost}/edit', [RunningCostsController::class, 'edit'])->name('runningcosts.edit');
+
+Route::put('/runningcosts/{runningcost}', [RunningCostsController::class, 'update'])->name('runningcosts.update');
+
+Route::delete('/runningcosts/{runningcost}/delete', [RunningCostsController::class, 'destroy'])->name('runningcosts.destroy');
