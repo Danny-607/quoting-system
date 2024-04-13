@@ -5,7 +5,7 @@
     @csrf
     @method('PUT')
 
-    <!-- Add input fields for editing employee information -->
+
     <label for="contracted_hours">Contracted Hours:</label>
     <input type="number" id="contracted_hours" name="contracted_hours" value="{{ old('contracted_hours', $employee->contracted_hours) }}">
 

@@ -46,4 +46,5 @@
         @endforeach
     </tbody>
 </table>
+<button><a href="{{Route('quotes.create')}}">Create a new quote</a></button>
 @endsection

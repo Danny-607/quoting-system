@@ -70,7 +70,25 @@ class QuotesController extends Controller
         }
 
     }
+    public function edit($id)
+    {
+        $quote = Quote::findOrFail($id);
+        $username = Auth::user()->name;
+        return view('quotes.edit', compact('quote', 'username'));
+    }
 
+    public function update(Request $request, $id)
+    {
+        $quote = Quote::findOrFail($id);
+        
+        $quote->update([
+            'description' => $request->description,
+            'preliminary_price' => $request->preliminary_price,
+            'approved' => $request->approved,
+        ]);
+
+        return redirect()->route('quotes.index', $quote->id)->with('success', 'Quote updated successfully!');
+    }
     public function accept(Quote $quote)
     {
         $quote->update(['approved' => 'yes']);

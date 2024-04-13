@@ -24,7 +24,8 @@ class ProjectsTableSeeder extends Seeder
                 'expected_end_date' => Carbon::today()->addDays(rand(10, 100)),
                 'actual_end_date' =>Carbon::today()->addDays(rand(20, 100)),
                 'project_cost' => rand(1000, 5000),
-                'project_revenue' => rand(5000, 10000)
+                'project_revenue' => rand(5000, 10000),
+                'status' => 'ongoing'
             ]);
     }
 }

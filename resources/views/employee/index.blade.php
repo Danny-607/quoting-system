@@ -30,6 +30,6 @@
         @endforeach
     </tbody>
 </table>
-
+<button><a href="{{Route('employees.create')}}">Add a new employee</a></button>
 
 @endsection

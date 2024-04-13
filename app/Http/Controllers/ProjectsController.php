@@ -83,12 +83,27 @@ class ProjectsController extends Controller
 
     return redirect()->route('projects.index')->with('success', 'Project created successfully!');
 }
-
-
-    public function update(){
-
+    public function edit($id)
+    {
+        $username = Auth::user()->name;
+        $project = Project::findOrFail($id);
+        return view('projects.edit', compact('project', 'username'));
     }
 
+    public function update(Request $request, $id)
+    {
+        $project = Project::findOrFail($id);
+        
+        $project->update([
+            'start_date' => $request->start_date,
+            'expected_end_date' => $request->expected_end_date,
+            'actual_end_date' => $request->actual_end_date,
+            'project_cost' => $request->project_cost,
+            'project_revenue' => $request->project_revenue,
+            'status' => $request->status,
+        ]);
+    }
+    
     public function destroy(){
 
     }

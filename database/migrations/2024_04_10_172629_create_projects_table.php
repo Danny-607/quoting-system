@@ -19,6 +19,7 @@ return new class extends Migration
             $table->date('actual_end_date')->nullable();
             $table->decimal('project_cost', 10, 2);
             $table->decimal('project_revenue', 10, 2)->nullable();
+            $table->string('status')->default('ongoing');
             $table->timestamps();
         });
     }

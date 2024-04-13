@@ -15,6 +15,8 @@
             <li><a href="{{Route('services.index')}}">Services</a></li>
             <li><a href="{{Route('quotes.index')}}">Quotes</a></li>
             <li><a href="{{Route('employees.index')}}">Employees</a></li>
+            <li><a href="{{Route('projects.index')}}">Projects</a></li>
+            <li><a href="{{Route('runningcosts.index')}}">Running Costs</a></li>
 
         </ul>
     </nav>
