@@ -26,12 +26,21 @@ class ServicesController extends Controller
     }
 
     public function store(Request $request){
-        $data = $request->validate([
+        $validated = $request->validate([
             'name' => 'required',
+            'cost' => 'required|decimal:0,2',
             'price' => 'required|decimal:0,2',
         ]);
+        $profit = $validated['price'] - $validated['cost'];
+        $service = new Service();
+        
+        $service->name = $validated['name'];
+        $service->cost = $validated['cost'];
+        $service->price = $validated['price'];
+        $service->profit = $profit;
+        $service->save();
 
-        $newService = Service::create($data);
+        
 
         return redirect(route('services.index'));
     }
@@ -50,6 +59,7 @@ class ServicesController extends Controller
     public function update(Service $service, Request $request){
         $data = $request->validate([
             'name' => 'required',
+            'cost' => 'required|decimal:0,2',
             'price' => 'required|decimal:0,2',
         ]);
 

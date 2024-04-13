@@ -5,7 +5,9 @@
     <tr>
         <th>ID</th>
         <th>Name</th>
+        <th>Cost</th>
         <th>Price</th>
+        <th>Profit</th>
         <th>Edit</th>
         <th>Delete</th>
     </tr>
@@ -13,7 +15,9 @@
     <tr>
         <td>{{$service->id}}</td>
         <td>{{$service->name}}</td>
+        <td>{{$service->cost}}</td>
         <td>{{$service->price}}</td>
+        <td>{{$service->profit}}</td>
         <td><a href="{{route('services.edit', ['service' => $service])}}">Edit</a></td>
         <td>
         <form method="post" action="{{route('services.destroy', ['service' => $service])}}" >

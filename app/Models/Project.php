@@ -2,10 +2,28 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Quote;
+use App\Models\Service;
+use App\Models\Employee;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Project extends Model
 {
-    use HasFactory;
+    protected $fillable = ['quote_id', 'start_date','expected_end_date', 'end_date', 'project_cost', 'project_revenue'];
+
+    public function quote()
+    {
+        return $this->belongsTo(Quote::class);
+    }
+
+    public function services()
+    {
+        return $this->belongsToMany(Service::class, 'project_services');
+    }
+
+    public function employees()
+    {
+        return $this->belongsToMany(Employee::class, 'project_employees');
+    }
 }

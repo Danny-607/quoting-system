@@ -7,8 +7,10 @@
     @method('post')
     <label for="name">Enter the name of the service</label>
     <input type="text" name="name" id="service_name">
+    <label for="cost">Enter the cost of the service</label>
+    <input type="text" name="cost" id="service_cost">
     <label for="price">Enter the price of the service</label>
-    <input type="text" name="price" id="service_name">
+    <input type="text" name="price" id="service_price">
 
     <button type="submit" value="save">Save a new service</button>
 </form>

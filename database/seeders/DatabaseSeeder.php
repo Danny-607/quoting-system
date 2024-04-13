@@ -18,6 +18,8 @@ class DatabaseSeeder extends Seeder
         $this->call(ServicesSeeder::class);
         $this->call(QuoteSeeder::class);
         $this->call(CategorySeeder::class);
+        $this->call(EmployeeSeeder::class);
         $this->call(RunningCostsSeeder::class);
+        $this->call(ProjectsTableSeeder::class);
     }
 }

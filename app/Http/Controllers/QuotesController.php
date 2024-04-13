@@ -74,7 +74,7 @@ class QuotesController extends Controller
     public function accept(Quote $quote)
     {
         $quote->update(['approved' => 'yes']);
-        return redirect()->route('quotes.index');
+        return redirect()->route('projects.create', ['quote' => $quote->id]);
     }
 
     public function destroy(Quote $quote)

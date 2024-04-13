@@ -17,31 +17,41 @@ class ServicesSeeder extends Seeder
         $services = [
         [
             'name' => '5 pages',
+            'cost' => '50',
             'price' => '100',
+            'profit' => '50',
             'created_at' => now(),
             'updated_at' => now(),
         ],
         [
             'name' => '10 pages',
+            'cost' => '50',
             'price' => '200',
+            'profit' => '150',
             'created_at' => now(),
             'updated_at' => now(),
         ],
         [
             'name' => 'SEO',
+            'cost' => '50',
             'price' => '300',
+            'profit' => '250',
             'created_at' => now(),
             'updated_at' => now(),
         ],
         [
             'name' => 'Design',
+            'cost' => '50',
             'price' => '400',
+            'profit' => '350',
             'created_at' => now(),
             'updated_at' => now(),
         ],
         [
             'name' => 'Hosting',
+            'cost' => '50',
             'price' => '500',
+            'profit' => '450',
             'created_at' => now(),
             'updated_at' => now(),
         ]

@@ -8,6 +8,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\QuoteController;
 use App\Http\Controllers\QuotesController;
 use App\Http\Controllers\EmployeeController;
+use App\Http\Controllers\ProjectsController;
 use App\Http\Controllers\ServicesController;
 use App\Http\Controllers\RunningCostsController;
 /*
@@ -86,3 +87,10 @@ Route::put('/runningcosts/{runningcost}/edit', [RunningCostsController::class, '
 Route::put('/runningcosts/{runningcost}', [RunningCostsController::class, 'update'])->name('runningcosts.update');
 
 Route::delete('/runningcosts/{runningcost}/delete', [RunningCostsController::class, 'destroy'])->name('runningcosts.destroy');
+
+// Projects Routes
+Route::get('/projects', [ProjectsController::class, 'index'])->name('projects.index');
+
+Route::get('/projects/{quote}/create', [ProjectsController::class, 'create'])->name('projects.create')->middleware('auth');
+
+Route::post('/projects', [ProjectsController::class, 'store'])->name('projects.store');
