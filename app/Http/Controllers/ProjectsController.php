@@ -20,11 +20,10 @@ class ProjectsController extends Controller
     }
 
     public function create(Quote $quote){
-        // Automatically handle authentication with middleware
         $username = Auth::user()->name;
     
         $quote->load('services', 'user');
-        $employees = Employee::all();  // Assuming you have an Employee model
+        $employees = Employee::all();
     
         $initialData = [
             'quote_id' => $quote->id,
@@ -56,19 +55,19 @@ class ProjectsController extends Controller
     // Calculate the total number of working days
     $totalWorkingDays = $startDate->diffInDays($endDate) + 1; // +1 to include the end day
 
-    $laborCost = 0;
+    $labourCost = 0;
 
     foreach ($validated['employees'] as $employeeId) {
         $employee = Employee::findOrFail($employeeId);
 
-        // Calculate the total labor hours for each employee
+        // Calculate the total labour hours for each employee
         $employeeTotalHours = $totalWorkingDays * $hoursPerWorkingDay;
 
-        // Calculate labor cost for this employee
-        $laborCost += $employee->wage_amount * $employeeTotalHours;
+        // Calculate labour cost for this employee
+        $labourCost += $employee->wage_amount * $employeeTotalHours;
     }
 
-    $projectCost = $servicesCost + $laborCost;
+    $projectCost = $servicesCost + $labourCost;
     $projectRevenue = $quote->services->sum('profit') - $projectCost;
 
     $project = Project::create([
