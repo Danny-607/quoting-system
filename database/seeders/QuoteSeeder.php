@@ -20,7 +20,7 @@ class QuoteSeeder extends Seeder
             'user_id' => '1', 
             'description' => $description,
             'preliminary_price' => 1000,
-            'approved' => "no",
+            'status' => "unapproved",
             'created_at' => now(),
             'updated_at' => now(),
         ]);

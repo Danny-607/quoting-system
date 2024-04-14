@@ -19,7 +19,7 @@ return new class extends Migration
             ->onDelete('cascade');
             $table->longText('description');
             $table->integer('preliminary_price');
-            $table->string('approved');
+            $table->string('status');
             $table->timestamps();
         });
     }

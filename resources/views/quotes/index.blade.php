@@ -40,6 +40,7 @@
                         @method('DELETE')
                         <button type="submit">Deny</button>
                     </form>
+                    <button><a href="{{Route('quotes.edit', $quote->id)}}">Edit quote</a></button>
                 </td>
             </tr>
             

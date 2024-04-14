@@ -9,5 +9,5 @@
     <textarea name="description" id="description" cols="30" rows="5"></textarea>
     <button type="submit">Submit</button>
 </form>
-<button><a href="{{Route('quotes.create')}}">Create a new quote</a></button>
+
 @endsection

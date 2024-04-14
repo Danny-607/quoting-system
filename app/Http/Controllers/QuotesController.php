@@ -59,7 +59,7 @@ class QuotesController extends Controller
         $quote = $user->quotes()->create([
             'description' => $request->description,
             'preliminary_price' => $totalPrice,
-            'approved' => 'no'
+            'status' => 'unapproved'
         ]);
 
         foreach ($request->services as $serviceId) {
@@ -68,7 +68,7 @@ class QuotesController extends Controller
                 'service_id' => $serviceId,
             ]);
         }
-
+        return redirect()->route('quotes.index')->with('success', 'Project created successfully!');
     }
     public function edit($id)
     {
@@ -84,14 +84,14 @@ class QuotesController extends Controller
         $quote->update([
             'description' => $request->description,
             'preliminary_price' => $request->preliminary_price,
-            'approved' => $request->approved,
+            'status' => $request->status,
         ]);
 
         return redirect()->route('quotes.index', $quote->id)->with('success', 'Quote updated successfully!');
     }
     public function accept(Quote $quote)
     {
-        $quote->update(['approved' => 'yes']);
+        $quote->update(['status' => 'approved']);
         return redirect()->route('projects.create', ['quote' => $quote->id]);
     }
 
