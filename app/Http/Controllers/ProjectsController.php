@@ -103,6 +103,14 @@ class ProjectsController extends Controller
             'status' => $request->status,
         ]);
     }
+
+    public function complete(Project $project ){
+        $project->update([
+            'status' => 'completed',
+            'actual_end_date' => Carbon::today()
+        ]);
+        return redirect()->back()->with('success', 'Project marked as completed.');
+    }
     
     public function destroy(){
 

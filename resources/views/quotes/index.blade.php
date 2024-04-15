@@ -16,6 +16,7 @@
     </thead>
     <tbody>
         @foreach ($quotes as $quote)
+        @if($quote->status == "unapproved")
             <tr>
                 <td>{{ $quote->id }}</td>
                 
@@ -43,7 +44,7 @@
                     <button><a href="{{Route('quotes.edit', $quote->id)}}">Edit quote</a></button>
                 </td>
             </tr>
-            
+            @endif
         @endforeach
     </tbody>
 </table>

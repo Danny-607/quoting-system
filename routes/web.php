@@ -7,6 +7,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\QuoteController;
 use App\Http\Controllers\QuotesController;
+use App\Http\Controllers\ManagerController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\ProjectsController;
 use App\Http\Controllers\ServicesController;
@@ -105,3 +106,8 @@ Route::post('/projects', [ProjectsController::class, 'store'])->middleware(['aut
 Route::get('/projects/{project}/edit', [ProjectsController::class, 'edit'])->middleware(['auth', 'role:admin|manager'])->name('projects.edit');
 
 Route::put('/projects/{project}', [ProjectsController::class, 'update'])->middleware(['auth', 'role:admin|manager'])->name('projects.update');
+
+Route::put('/projects/{project}/completed', [ProjectsController::class, 'complete'])->middleware(['auth', 'role:admin|manager'])->name('projects.complete');
+
+// Managers routes
+Route::get('/dashboard/manager', [ManagerController::class, 'index'])->middleware(['auth', 'role:admin|manager'])->name('manager.index');
