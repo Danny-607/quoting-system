@@ -8,6 +8,7 @@
         <th>Cost</th>
         <th>Price</th>
         <th>Profit</th>
+        <th>Category</th>
         <th>Edit</th>
         <th>Delete</th>
     </tr>
@@ -18,18 +19,20 @@
         <td>{{$service->cost}}</td>
         <td>{{$service->price}}</td>
         <td>{{$service->profit}}</td>
-        <td><a href="{{route('services.edit', ['service' => $service])}}">Edit</a></td>
+        <td>{{$service->serviceCategory ? $service->serviceCategory->name : 'No Category'}}</td> 
+        <td><a href="{{route('services.edit', ['service' => $service->id])}}">Edit</a></td>
         <td>
-        <form method="post" action="{{route('services.destroy', ['service' => $service])}}" >
-            @csrf
-            @method('delete')
-            <input type="submit" value="Delete">
-        </form></td>
+            <form method="post" action="{{route('services.destroy', ['service' => $service->id])}}" >
+                @csrf
+                @method('delete')
+                <input type="submit" value="Delete">
+            </form>
+        </td>
     </tr>
-@endforeach
+    @endforeach
 </table>
 <p>@if (session()->has('success'))
-    {{session('success')}}
+    {{ session('success') }}
 @endif</p>
 <a href="{{route('services.create')}}">Create a service</a>
 @endsection
