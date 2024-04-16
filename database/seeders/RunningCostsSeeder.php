@@ -14,7 +14,7 @@ class RunningCostsSeeder extends Seeder
     public function run(): void
     {
         RunningCost::create([
-            'category_id' => 1,
+            'running_cost_category_id' => 1,
             'name' => 'Electricity Bill',
             'cost' => 200.00,
             'date_incurred' => '2024-04-01',
@@ -23,7 +23,7 @@ class RunningCostsSeeder extends Seeder
             'updated_at' => now(),
         ]);
         RunningCost::create([
-            'category_id' => 2,
+            'running_cost_category_id' => 2,
             'name' => 'SaaS Product',
             'cost' => 30.00,
             'date_incurred' => '2024-04-01',

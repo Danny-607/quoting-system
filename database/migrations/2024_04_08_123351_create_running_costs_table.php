@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('running_costs', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('category_id')->nullable();
-            $table->foreign('category_id')
-            ->references('id')->on('categories')
+            $table->unsignedBigInteger('running_cost_category_id')->nullable();
+            $table->foreign('running_cost_category_id')
+            ->references('id')->on('running_cost_categories')
             ->onDelete('cascade');
             $table->string('name');
             $table->decimal('cost');

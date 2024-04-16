@@ -16,6 +16,7 @@ class ServicesSeeder extends Seeder
     {
         $services = [
         [
+            'service_category_id' => '1',
             'name' => '5 pages',
             'cost' => '50',
             'price' => '100',
@@ -24,6 +25,7 @@ class ServicesSeeder extends Seeder
             'updated_at' => now(),
         ],
         [
+            'service_category_id' => '1',
             'name' => '10 pages',
             'cost' => '50',
             'price' => '200',
@@ -32,6 +34,7 @@ class ServicesSeeder extends Seeder
             'updated_at' => now(),
         ],
         [
+            'service_category_id' => '2',
             'name' => 'SEO',
             'cost' => '50',
             'price' => '300',
@@ -40,6 +43,7 @@ class ServicesSeeder extends Seeder
             'updated_at' => now(),
         ],
         [
+            'service_category_id' => '3',
             'name' => 'Design',
             'cost' => '50',
             'price' => '400',
@@ -48,6 +52,7 @@ class ServicesSeeder extends Seeder
             'updated_at' => now(),
         ],
         [
+            'service_category_id' => '4',
             'name' => 'Hosting',
             'cost' => '50',
             'price' => '500',

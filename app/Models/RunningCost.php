@@ -10,7 +10,7 @@ class RunningCost extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['category_id', 'name', 'cost', 'date_incurred', 'repeating'];
+    protected $fillable = ['running_cost_category_id', 'name', 'cost', 'date_incurred', 'repeating'];
     
     public function category(){
         return $this->belongsTo(Category::class);

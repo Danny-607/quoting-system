@@ -6,11 +6,11 @@ use App\Models\RunningCost;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class Category extends Model
+class RunningCostCategory extends Model
 {
     use HasFactory;
 
-    protected $fillable = ["name"];
+    protected $fillable = ['name'];
 
     public function runningCosts(){
         return $this->hasMany(RunningCost::class);
