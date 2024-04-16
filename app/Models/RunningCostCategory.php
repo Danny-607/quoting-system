@@ -12,7 +12,8 @@ class RunningCostCategory extends Model
 
     protected $fillable = ['name'];
 
-    public function runningCosts(){
-        return $this->hasMany(RunningCost::class);
+    public function runningCosts()
+    {
+        return $this->hasMany(RunningCost::class, 'running_cost_category_id');
     }
 }

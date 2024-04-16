@@ -19,7 +19,8 @@
                 <td>{{ $runningCost->name }}</td>
                 <td>£{{ $runningCost->cost }}</td>
                 <td>{{ $runningCost->date_incurred }}</td>
-                <td>{{$runningCost->category->name}}</td>
+                <td>{{ $runningCost->runningCostCategory->name ?? 'No Category' }}</td>
+
                 <td>{{ $runningCost->repeating ? 'Yes' : 'No' }}</td>
                 <td>
                     <form method="POST" action="{{ route('runningcosts.edit', $runningCost->id) }}">

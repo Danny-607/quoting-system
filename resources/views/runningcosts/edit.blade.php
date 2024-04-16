@@ -14,13 +14,14 @@
         <input type="date" name="date_incurred" id="date_incurred" value="{{ $runningCost->date_incurred }}">
         
         <label for="category">Category</label>
-        <select name="category" id="category">
+        <select name="category_id" id="category_id">
             @foreach ($categories as $category)
                 <option value="{{ $category->id }}" {{ $runningCost->category_id == $category->id ? 'selected' : '' }}>
                     {{ $category->name }}
                 </option>
             @endforeach
         </select>
+        
         
         <label for="repeating">Repeating</label>
         <input type="checkbox" name="repeating" id="repeating" value="1" {{ $runningCost->repeating ? 'checked' : '' }}>
