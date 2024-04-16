@@ -38,7 +38,7 @@ class RunningCostsController extends Controller
             'name' => 'required|string',
             'cost' => 'required|numeric',
             'date_incurred' => 'required|date',
-            'category' => 'required|exists:running_cost_categories,id',  // Corrected table name
+            'category' => 'required|exists:running_cost_categories,id',
             'repeating' => 'nullable|boolean',
         ]);
 
@@ -46,7 +46,7 @@ class RunningCostsController extends Controller
         $runningCost->name = $validatedData['name'];
         $runningCost->cost = $validatedData['cost'];
         $runningCost->date_incurred = $validatedData['date_incurred'];
-        $runningCost->running_cost_category_id = $validatedData['category'];  // Ensure this is the correct field name
+        $runningCost->running_cost_category_id = $validatedData['category'];  
         $runningCost->repeating = $request->has('repeating');
         $runningCost->save();
 

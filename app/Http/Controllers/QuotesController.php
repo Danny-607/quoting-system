@@ -6,6 +6,7 @@ use App\Models\Quote;
 use App\Models\Service;
 use App\Models\QuoteService;
 use Illuminate\Http\Request;
+use App\Models\ServiceCategory;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Auth;
 
@@ -27,14 +28,16 @@ class QuotesController extends Controller
     public function create()
     {
         $services = Service::all();
+        $categories = ServiceCategory::with('services')->get();
         $user = Auth::user();
         if ($user) {
             $username = $user->name;
-            return view('quotes.create', ['username' => $username, 'services' => $services]);
+            return view('quotes.create', compact('username', 'services', 'categories'));
         } else {
             return redirect()->route('login');
         }
     }
+
     public function store(Request $request){
         $request->validate([
             'services' => [

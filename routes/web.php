@@ -11,7 +11,9 @@ use App\Http\Controllers\ManagerController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\ProjectsController;
 use App\Http\Controllers\ServicesController;
+use App\Http\Controllers\StaticPagesController;
 use App\Http\Controllers\RunningCostsController;
+use App\Http\Controllers\CustomerQuotesController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -24,19 +26,26 @@ use App\Http\Controllers\RunningCostsController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
 });
 
 Auth::routes();
 
-Route::get('/home', [HomeController::class, 'index'])->name('home');
+Route::get('/home', [StaticPagesController::class, 'home'])->name('home');
+
+Route::get('/about-us', [StaticPagesController::class, 'about'])->name('about');
+
+Route::get('/previous-works', [StaticPagesController::class, 'works'])->name('works');
+
+
 
 // Back-end routes
 
 // Admin routes
 Route::get('/dashboard/admin', [AdminController::class, 'index'])->middleware(['auth','role:admin'])->name('admin.index');
 
-Route::get('/services/admin', [AdminController::class, 'index'])->middleware(['auth', 'role:admin|manager'])->name('admin.index');
+Route::post('/admin/role', [AdminController::class, 'store'])->name('admin.role');
+
 
 
 // Services routes
@@ -56,7 +65,7 @@ Route::delete('/services/{service}/delete', [ServicesController::class, 'destroy
 
 Route::get('/quotes', [QuotesController::class, 'index'])->middleware(['auth', 'role:admin|manager'])->name('quotes.index');
 
-Route::get('/quotes/create', [QuotesController::class, 'create'])->middleware(['auth', 'role:admin|manager'])->name('quotes.create');
+Route::get('/quotes/create', [QuotesController::class, 'create'])->name('quotes.create');
 
 Route::post('/quotes', [QuotesController::class, 'store'])->middleware(['auth', 'role:admin|manager'])->name('quotes.store');
 
