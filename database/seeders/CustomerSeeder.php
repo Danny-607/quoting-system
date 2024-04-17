@@ -7,22 +7,20 @@ use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
-class ManagerSeeder extends Seeder
+class CustomerSeeder extends Seeder
 {
     /**
      * Run the database seeds.
      */
-    protected static ?string $password;
     public function run(): void
     {
         User::create([
-            'first_name' => 'Example',
-            'last_name' => 'Manager',
+            'first_name' => 'John',
+            'last_name' => 'Walker',
             'phone_number' => '12345678912', 
-            'email' => 'manager@manager.com',
+            'email' => 'customer@customer.com',
             'email_verified_at' => now(),
             'password' => Hash::make('password'),
-        ])->assignRole('manager');
+        ])->assignRole('customer');
     }
-    
 }

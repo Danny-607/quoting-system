@@ -15,6 +15,7 @@ class DatabaseSeeder extends Seeder
         $this->call(RoleSeeder::class);
         $this->call(AdminSeeder::class);
         $this->call(ManagerSeeder::class);
+        $this->call(CustomerSeeder::class);
         $this->call(RunningCostCategorySeeder::class);
         $this->call(ServiceCategorySeeder::class);
         $this->call(ServicesSeeder::class);
