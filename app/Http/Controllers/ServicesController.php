@@ -9,30 +9,20 @@ use Illuminate\Support\Facades\Auth;
 
 class ServicesController extends Controller
 {
-    protected $user;
 
-    public function __construct()
-    {
-        $this->middleware(function ($request, $next) {
-            $this->user = Auth::user();
-            return $next($request);
-        });
-    }
-
-    public function index()
-    {
+    public function index(){
+        $user = Auth::user();
+        $username = $user->name;
         $services = Service::with('serviceCategory')->get();
-        return view('services.index', ['services' => $services, 'name' => $this->user->first_name]);
+        return view('services.index', compact('services', 'username'));
     }
 
-    public function create()
-    {
+    public function create(){
         $categories = ServiceCategory::all();
-        return view('services.create', ['categories' => $categories]);
+        return view('services.create', compact('categories'));
     }
 
-    public function store(Request $request)
-    {
+    public function store(Request $request){
         $request->validate([
             'name' => 'required|string',
             'cost' => 'required|numeric',
@@ -40,23 +30,22 @@ class ServicesController extends Controller
             'category_id' => 'required|exists:service_categories,id',
         ]);
 
-        $serviceData = $request->only(['name', 'cost', 'price']);
-        $serviceData['profit'] = $request->price - $request->cost;
-        $serviceData['service_category_id'] = $request->category_id;
+        $service = new Service($request->only(['name', 'cost', 'price']));
+        $service->profit = $request->price - $request->cost;
+        $service->service_category_id = $request->category_id;
+        $service->save();
 
-        Service::create($serviceData);
-
-        return redirect()->route('services.index')->with('success', 'Service added successfully');
+        return redirect(route('services.index'))->with('success', 'Service added successfully');
     }
 
-    public function edit(Service $service)
-    {
+    public function edit(Service $service){
+        $user = Auth::user();
+        $username = $user->name;
         $categories = ServiceCategory::all();
-        return view('services.edit', ['service' => $service, 'categories' => $categories, 'name' => $this->user->name]);
+        return view('services.edit', compact('service', 'categories', 'username'));
     }
 
-    public function update(Request $request, Service $service)
-    {
+    public function update(Request $request, Service $service){
         $request->validate([
             'name' => 'required|string',
             'cost' => 'required|numeric',
@@ -64,18 +53,16 @@ class ServicesController extends Controller
             'category_id' => 'required|exists:service_categories,id',
         ]);
 
-        $serviceData = $request->only(['name', 'cost', 'price']);
-        $serviceData['profit'] = $request->price - $request->cost;
-        $serviceData['service_category_id'] = $request->category_id;
+        $service->update($request->only(['name', 'cost', 'price']));
+        $service->profit = $request->price - $request->cost;
+        $service->service_category_id = $request->category_id;
+        $service->save();
 
-        $service->update($serviceData);
-
-        return redirect()->route('services.index')->with('success', 'Service updated successfully');
+        return redirect(route('services.index'))->with('success', 'Service updated successfully');
     }
 
-    public function destroy(Service $service)
-    {
+    public function destroy(Service $service){
         $service->delete();
-        return redirect()->route('services.index')->with('success', 'Service deleted successfully');
+        return redirect(route('services.index'))->with('success', 'Service deleted successfully');
     }
 }

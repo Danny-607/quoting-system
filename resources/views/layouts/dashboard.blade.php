@@ -11,8 +11,7 @@
 <body>
     <nav class="sidebar">
         <ul>
-            <li class="account">{{strtoupper($name)}}</li>
-
+            <li class="account">{{strtoupper($username)}}</li>
             @if(auth()->user()->hasRole('admin'))
                 <li><a href="{{ route('admin.index') }}">Dashboard</a></li>
             @elseif (auth()->user()->hasRole('manager'))
