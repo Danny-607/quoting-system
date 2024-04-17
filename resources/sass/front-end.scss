@@ -105,7 +105,7 @@ button:hover {
 
 .service-box {
     display: block;
-    width: fit-content; /* Adjust this as necessary to fit your layout */
+    width: fit-content;
     padding: 10px;
     margin: 5px;
     background-color: #f8f9fa;
@@ -116,7 +116,7 @@ button:hover {
 }
 
 .service-box:hover {
-    background-color: #e2e6ea; /* Lighter shade for hover */
+    background-color: #e2e6ea;
 }
 
 .service-box input[type="checkbox"] {

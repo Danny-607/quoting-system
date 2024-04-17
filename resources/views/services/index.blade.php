@@ -9,8 +9,7 @@
         <th>Price</th>
         <th>Profit</th>
         <th>Category</th>
-        <th>Edit</th>
-        <th>Delete</th>
+        <th>Actions</th>
     </tr>
     @foreach ($services as $service)
     <tr>
@@ -20,19 +19,23 @@
         <td>{{$service->price}}</td>
         <td>{{$service->profit}}</td>
         <td>{{$service->serviceCategory ? $service->serviceCategory->name : 'No Category'}}</td> 
-        <td><a href="{{route('services.edit', ['service' => $service->id])}}">Edit</a></td>
-        <td>
-            <form method="post" action="{{route('services.destroy', ['service' => $service->id])}}" >
-                @csrf
-                @method('delete')
-                <input type="submit" value="Delete">
-            </form>
+        
+            <td>
+                <div class="action-buttons">
+                    <a class="edit-btn btn" href="{{route('services.edit', ['service' => $service->id])}} ">Edit</a>
+                <form method="post" action="{{route('services.destroy', ['service' => $service->id])}}" >
+                    @csrf
+                    @method('delete')
+                    <input type="submit" class="delete-btn btn" value="Delete">
+                </form>
+            </div>
         </td>
+        
     </tr>
     @endforeach
 </table>
 <p>@if (session()->has('success'))
     {{ session('success') }}
 @endif</p>
-<a href="{{route('services.create')}}">Create a service</a>
+<a class="create-btn btn " href="{{route('services.create')}}">Create a service</a>
 @endsection

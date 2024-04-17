@@ -1,6 +1,8 @@
-$primary-color: #1f153d;
-$secondary-color: #a8a6b2;
+$primary-color: #ffffff;
+$secondary-color: #373737;
 $accent-color: #0e9b73;
+
+
 
 * {
     margin: 0;
@@ -19,7 +21,7 @@ body{
 
 /* Sidebar navigation styling */
 .sidebar {
-    background-color: darken($primary-color, 5%);
+    background-color: darken($secondary-color, 5%);
     padding-top: 60px;
     text-align: center;
     grid-column: 1; /* Place the sidebar in the first column */
@@ -44,7 +46,7 @@ body{
 
 .sidebar a {
     display: block;
-    color: #fff;
+    color: white;
     text-decoration: none;
 }
 
@@ -56,23 +58,89 @@ body{
 main{
     grid-row: 2;
 }
-table{
+
+/* Add some padding and margin to the table */
+table {
     width: 100%;
-    color: #fff;
-    border: 2px solid white;
-    border-spacing: 0;
-    text-align: center;
     border-collapse: collapse;
-
+    padding: 10px;
+    margin-bottom: 20px;
+  }
+  
+  /* Style the table header */
+  thead th {
+    background-color: #f2f2f2;
+    color: #333;
+    font-weight: bold;
+    padding: 10px;
+    text-align: center;
+  }
+  
+  /* Style the table rows */
+  tbody tr {
+    background-color: #fff;
+  }
+  
+  /* Alternate row background color */
+  tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+  
+  /* Style the table cells */
+  td {
+    // padding: 10px;
+    text-align: center;
+    
+  }
+  td a {
+    display: inline-block; /* Ensure the <a> tag is treated as a block-level element */
+    text-align: center; /* Center the content horizontally */
+    width: 100%; /* Ensure the <a> tag takes up the entire width of its container */
+}
+  /* Style the buttons */
+  .action-buttons {
+    display: flex;
+    justify-content: center;
 }
 
-th{
-    border: 2px solid white;
-    margin: 0;
+.create-btn{
+    background-color: #b86314;
 }
-td{
-    border: 2px solid white ;
+.save-btn{
+    background-color: #02aa02;
 }
+.delete-btn{
+    background-color: #ef3c3c;
+}
+
+.edit-btn{
+    background-color: #5fb6fd;
+}
+
+
+.btn {
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    text-align: center;
+    display: flex;
+    justify-content: center; /* Horizontally center */
+    align-items: center; /* Vertically center */
+    width: 150px;
+    height: 50px;
+    text-decoration: none;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    font-weight: bold;
+  }
+  
+  /* Style the links */
+  a {
+    color: white;
+    text-decoration: none;
+  }
+
 
 /* Media query for responsiveness */
 @media (max-width: 768px) {

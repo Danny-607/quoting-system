@@ -8,7 +8,6 @@
             <th>Quote ID</th>
             <th>User Name</th>
             <th>Description</th>
-            
             <th>Services</th>
             <th>Quoted Price</th>
             <th>Accept or Deny</th>
@@ -31,22 +30,24 @@
                     £{{ $quote->preliminary_price }}
                 </td>
                 <td>
+                    <div class="action-buttons">
                     <form method="POST" action="{{ route('quotes.accept', $quote->id) }}">
                         @csrf
                         @method('put')
-                        <button type="submit">Accept</button>
+                        <button class="save-btn btn" type="submit">Accept</button>
                     </form>
                     <form method="POST" action="{{ route('quotes.destroy', $quote->id) }}">
                         @csrf
                         @method('DELETE')
-                        <button type="submit">Deny</button>
+                        <button class="delete-btn btn" type="submit">Deny</button>
                     </form>
-                    <button><a href="{{Route('quotes.edit', $quote->id)}}">Edit quote</a></button>
+                    <a class="edit-btn btn" href="{{Route('quotes.edit', $quote->id)}}">Edit</a>
+                    </div>
                 </td>
             </tr>
             @endif
         @endforeach
     </tbody>
 </table>
-<button><a href="{{Route('quotes.create')}}">Create a new quote</a></button>
+<a class="create-btn btn" href="{{Route('quotes.create')}}">Create a new quote</a>
 @endsection

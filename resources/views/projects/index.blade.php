@@ -37,11 +37,13 @@
                         <td>{{ $project->project_revenue }}</td>
                         <td>{{$project->expected_end_date}}</td>
                         <td>
+                            <div class="action-buttons">
                             <form action="{{ route('projects.complete', $project->id) }}" method="POST">
                                 @csrf
                                 @method('PUT')
-                                <button type="submit" class="btn btn-success">Complete Project</button>
+                                <button type="submit" class="btn save-btn">Complete Project</button>
                             </form>
+                        </div>
                         </td>
                     </tr>
                     @endif

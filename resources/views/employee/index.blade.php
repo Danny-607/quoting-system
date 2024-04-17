@@ -19,17 +19,19 @@
             <td>{{ $employee->wage_type }}</td>
             <td>{{ $employee->wage_amount }}</td>
             <td>
-                <a href="{{ route('employees.edit', $employee->id) }}">Edit</a>
+                <div class="action-buttons">
+                <a class="edit-btn btn" href="{{ route('employees.edit', $employee->id) }}">Edit</a>
                 <form method="POST" action="{{ route('employees.destroy', $employee->id) }}" style="display: inline-block;">
                     @csrf
                     @method('DELETE')
-                    <button type="submit" onclick="return confirm('Are you sure you want to delete this employee?')">Delete</button>
+                    <button class="delete-btn btn" type="submit" onclick="return confirm('Are you sure you want to delete this employee?')">Delete</button>
                 </form>
+                </div>
             </td>
         </tr>
         @endforeach
     </tbody>
 </table>
-<button><a href="{{Route('employees.create')}}">Add a new employee</a></button>
+<a class="create-btn btn" href="{{Route('employees.create')}}">Add a new employee</a>
 
 @endsection
