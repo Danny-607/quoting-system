@@ -15,8 +15,8 @@ class AdminController extends Controller
         $users = User::all(); 
         $roles = Role::all(); 
         if ($user){
-            $username = $user->name;
-            return view('admin.index', compact('username','users', 'roles'));
+            $name = $user->first_name ;
+            return view('admin.index', compact('name','users', 'roles'));
         } else{
             return redirect()->route('login');
         }
