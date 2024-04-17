@@ -12,9 +12,9 @@ class ServicesController extends Controller
 
     public function index(){
         $user = Auth::user();
-        $username = $user->name;
+        $name = $user->first_name;
         $services = Service::with('serviceCategory')->get();
-        return view('services.index', compact('services', 'username'));
+        return view('services.index', compact('services', 'name'));
     }
 
     public function create(){
@@ -40,7 +40,7 @@ class ServicesController extends Controller
 
     public function edit(Service $service){
         $user = Auth::user();
-        $username = $user->name;
+        $name = $user->name;
         $categories = ServiceCategory::all();
         return view('services.edit', compact('service', 'categories', 'username'));
     }
