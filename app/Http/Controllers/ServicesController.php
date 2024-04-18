@@ -40,9 +40,9 @@ class ServicesController extends Controller
 
     public function edit(Service $service){
         $user = Auth::user();
-        $name = $user->name;
+        $name = $user->first_name;
         $categories = ServiceCategory::all();
-        return view('services.edit', compact('service', 'categories', 'username'));
+        return view('services.edit', compact('service', 'categories', 'name'));
     }
 
     public function update(Request $request, Service $service){
