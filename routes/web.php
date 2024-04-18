@@ -8,6 +8,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\QuoteController;
 use App\Http\Controllers\QuotesController;
 use App\Http\Controllers\ManagerController;
+use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\ProjectsController;
 use App\Http\Controllers\ServicesController;
@@ -67,7 +68,7 @@ Route::get('/quotes', [QuotesController::class, 'index'])->middleware(['auth', '
 
 Route::get('/quotes/create', [QuotesController::class, 'create'])->name('quotes.create');
 
-Route::post('/quotes', [QuotesController::class, 'store'])->middleware(['auth', 'role:admin|manager'])->name('quotes.store');
+Route::post('/quotes', [QuotesController::class, 'store'])->name('quotes.store');
 
 Route::put('/quotes/{quote}/accept', [QuotesController::class, 'accept'])->middleware(['auth', 'role:admin|manager'])->name('quotes.accept');
 
@@ -120,3 +121,5 @@ Route::put('/projects/{project}/completed', [ProjectsController::class, 'complet
 
 // Managers routes
 Route::get('/dashboard/manager', [ManagerController::class, 'index'])->middleware(['auth', 'role:admin|manager'])->name('manager.index');
+
+Route::get('/dashboard/customer', [CustomerController::class, 'index'])->middleware(['auth', 'role:customer'])->name('customer.index');
