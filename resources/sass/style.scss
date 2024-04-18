@@ -18,7 +18,19 @@ body{
     gap: 20px; /* Gap between sidebar and section */
     height: 100vh;
 }
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto;
+    grid-gap: 20px;
+    padding: 20px;
+}
 
+.profit-section, .ongoing-projects-section, .completed-projects-section, .runningcost-section {
+    border: 1px solid #ccc;
+    padding: 10px;
+    background-color: #f9f9f9;
+}
 /* Sidebar navigation styling */
 .sidebar {
     background-color: darken($secondary-color, 5%);
