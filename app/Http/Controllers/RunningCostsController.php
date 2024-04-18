@@ -15,8 +15,8 @@ class RunningCostsController extends Controller
         $user = Auth::user();
         $runningCosts = RunningCost::with('runningCostCategory')->get();
         if ($user) {
-            $username = $user->name;
-            return view('runningcosts.index', compact('username', 'runningCosts'));
+            $name = $user->first_name;
+            return view('runningcosts.index', compact('name', 'runningCosts'));
         } else {
             return redirect()->route('login');
         }
@@ -26,8 +26,8 @@ class RunningCostsController extends Controller
         $user = Auth::user();
         $categories = RunningCostCategory::all();
         if ($user) {
-            $username = $user->name;
-            return view('runningcosts.create', compact('username', 'categories'));
+            $name = $user->first_name;
+            return view('runningcosts.create', compact('name', 'categories'));
         } else {
             return redirect()->route('login');
         }
@@ -58,8 +58,8 @@ class RunningCostsController extends Controller
         $runningCost = RunningCost::findOrFail($id);
         $categories = RunningCostCategory::all();
         if ($user) {
-            $username = $user->name;
-            return view('runningcosts.edit', compact('username', 'categories', 'runningCost'));
+            $name = $user->first_name;
+            return view('runningcosts.edit', compact('name', 'categories', 'runningCost'));
         } else {
             return redirect()->route('login');
         }
