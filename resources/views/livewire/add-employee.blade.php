@@ -3,7 +3,7 @@
     <div class="employee-select">
         <select name="employees[]">
             @foreach ($allEmployees as $employee)
-                <option value="{{ $employee->id }}">{{ $employee->user->name }}</option>
+                <option value="{{ $employee->id }}">{{ $employee->user->first_name }}</option>
             @endforeach
         </select>
     </div>

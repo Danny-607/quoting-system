@@ -12,26 +12,26 @@ use Illuminate\Support\Facades\Auth;
 class ProjectsController extends Controller
 {
     public function index(){
-        $username = Auth::user()->name;
+        $name = Auth::user()->first_name;
         $projects = Project::with('quote.user', 'employees')->get();
 
-        return view('projects.index', compact('projects', 'username'));
+        return view('projects.index', compact('projects', 'name'));
     
     }
 
     public function create(Quote $quote){
-        $username = Auth::user()->name;
+        $name = Auth::user()->first_name;
     
         $quote->load('services', 'user');
         $employees = Employee::all();
-    
+        // dd($quote->load('services', 'name'));
         $initialData = [
             'quote_id' => $quote->id,
-            'user_name' => $quote->user->name ?? 'N/A',
+            'user_name' => $quote->user->first_name ?? 'N/A',
             'services' => $quote->services->pluck('name')->join(', ')
         ];
     
-        return view('projects.create', compact('quote', 'username', 'initialData', 'employees'));
+        return view('projects.create', compact('quote', 'name', 'initialData', 'employees'));
     }
     public function store(Request $request)
 {
@@ -85,9 +85,9 @@ class ProjectsController extends Controller
 }
     public function edit($id)
     {
-        $username = Auth::user()->name;
+        $name = Auth::user()->first_name;
         $project = Project::findOrFail($id);
-        return view('projects.edit', compact('project', 'username'));
+        return view('projects.edit', compact('project', 'name'));
     }
 
     public function update(Request $request, $id)
