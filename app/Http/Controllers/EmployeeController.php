@@ -14,9 +14,9 @@ class EmployeeController extends Controller
         $user = Auth::user();
         $employees = Employee::all();
         if ($user) {
-            $username = $user->name;
+            $name = $user->first_name;
             $users = User::all();
-            return view('employee.index', compact('users', 'username', 'employees'));
+            return view('employee.index', compact('users', 'name', 'employees'));
         } else {
             return redirect()->route('login');
         }
@@ -26,9 +26,9 @@ class EmployeeController extends Controller
         $user = Auth::user();
         
         if ($user) {
-            $username = $user->name;
+            $name = $user->first_name;
             $users = User::all();
-            return view('employee.create', compact('users', 'username'));
+            return view('employee.create', compact('users', 'name'));
         } else {
             return redirect()->route('login');
         }
@@ -68,9 +68,9 @@ class EmployeeController extends Controller
     $user = Auth::user();
         
         if ($user) {
-            $username = $user->name;
+            $name = $user->first_name;
             $users = User::all();
-            return view('employee.edit', compact('employee', 'users', 'username'));
+            return view('employee.edit', compact('employee', 'users', 'name'));
         } else {
             return redirect()->route('login');
         }
