@@ -44,29 +44,31 @@ class ProjectsController extends Controller
     ]);
 
     $quote = Quote::with('services')->findOrFail($validated['quote_id']);
+    // Project cost 
     $servicesCost = $quote->services->sum('cost');
 
     $startDate = Carbon::parse($validated['start_date']);
     $endDate = Carbon::parse($validated['expected_end_date']);
 
-    // Define the standard length of a working day
-    $hoursPerWorkingDay = 8;
-    
-    // Calculate the total number of working days
-    $totalWorkingDays = $startDate->diffInDays($endDate) + 1; // +1 to include the end day
+    $numberOfWeeks = $startDate->diffInWeeks($endDate);
+    $diffInDays = round($startDate->diffInDays($endDate));
 
     $labourCost = 0;
+        foreach ($validated['employees'] as $employeeId) {
+            $employee = Employee::findOrFail($employeeId);
+            if($employee->wage_type == "salary"){
+                $hourlyWage = $employee->wage_amount/(52*$employee->contracted_hours) ;
+            }else{
+                $hourlyWage = $employee->wage_amount;
+            }
 
-    foreach ($validated['employees'] as $employeeId) {
-        $employee = Employee::findOrFail($employeeId);
-
-        // Calculate the total labour hours for each employee
-        $employeeTotalHours = $totalWorkingDays * $hoursPerWorkingDay;
-
-        // Calculate labour cost for this employee
-        $labourCost += $employee->wage_amount * $employeeTotalHours;
-    }
-
+            $nonWorkingDays = 7 - $employee->contracted_days;
+            $totalNonWorkingDays = $numberOfWeeks * $nonWorkingDays;
+            $totalDaysOnProject = $diffInDays - $totalNonWorkingDays;
+            $a = $employee->contracted_hours/$employee->contracted_days;
+            $totalHoursOnProject = $totalDaysOnProject * $a;
+            $labourCost += $totalHoursOnProject * $hourlyWage;
+        }
     $projectCost = $servicesCost + $labourCost;
     
     $projectRevenue = $quote->preliminary_price - $projectCost;
