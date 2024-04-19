@@ -14,7 +14,7 @@ body{
     background-color: $primary-color;
     display: grid;
     grid-template-columns: 200px 1fr; /* Sidebar width and the rest of the page */
-    grid-template-rows: 150px 1fr;
+    grid-template-rows: 100px 1fr;
     gap: 20px; /* Gap between sidebar and section */
     height: 100vh;
 }
@@ -35,7 +35,6 @@ body{
 .sidebar {
     background-color: darken($secondary-color, 5%);
     padding-top: 60px;
-    text-align: center;
     grid-column: 1; /* Place the sidebar in the first column */
     grid-row: 1 / span 2;
 }
@@ -55,16 +54,20 @@ body{
     margin-top: 10px;
     font-size: 20px;
 }
-
+li{
+    list-style-type: none;
+}
 .sidebar a {
     display: block;
+    border-radius: 5px;
     color: white;
     text-decoration: none;
+    padding: 5px 0;
 }
 
 /* Hover effect for the links */
-.sidebar li:hover {
-    background-color: lighten($primary-color, 30%);
+.sidebar a:hover {
+    background-color: darken($primary-color, 70%);
 }
 
 main{
@@ -105,9 +108,9 @@ table {
     
   }
   td a {
-    display: inline-block; /* Ensure the <a> tag is treated as a block-level element */
-    text-align: center; /* Center the content horizontally */
-    width: 100%; /* Ensure the <a> tag takes up the entire width of its container */
+    display: inline-block; 
+    text-align: center; 
+    width: 100%; 
 }
   /* Style the buttons */
   .action-buttons {
@@ -128,6 +131,18 @@ table {
 .edit-btn{
     background-color: #5fb6fd;
 }
+.logout-btn{
+    width: 100%;
+    background-color: #ef3c3c;
+    color: white;
+    text-align: center; 
+    font-size: 1.6em;
+    border-radius: 10px;
+    border: none;
+    padding: 4px 2px;
+    cursor: pointer;
+  }
+
 .container {
     max-width: 600px;
     margin: 0 auto;
@@ -181,6 +196,7 @@ select {
   }
 
 
+  
 /* Media query for responsiveness */
 @media (max-width: 768px) {
     .sidebar {
@@ -188,4 +204,5 @@ select {
         grid-column: 1 / -1; /* Expand sidebar to full width */
         padding-top: 10px;
     }
+
 }

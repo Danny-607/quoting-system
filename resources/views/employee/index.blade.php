@@ -19,7 +19,7 @@
             <td>{{ $employee->contracted_hours }}</td>
             <td>{{ $employee->contracted_days }}</td>
             <td>{{ $employee->wage_type }}</td>
-            <td>{{ $employee->wage_amount }}</td>
+            <td>£{{ $employee->wage_amount }}</td>
             <td>
                 <div class="action-buttons">
                 <a class="edit-btn btn" href="{{ route('employees.edit', $employee->id) }}">Edit</a>
