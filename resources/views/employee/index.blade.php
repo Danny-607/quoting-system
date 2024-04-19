@@ -15,7 +15,7 @@
     <tbody>
         @foreach ($employees as $employee)
         <tr>
-            <td>{{ $employee->user->first_name }}</td>
+            <td>{{ $employee->user->first_name }} {{ $employee->user->last_name }}</td>
             <td>{{ $employee->contracted_hours }}</td>
             <td>{{ $employee->contracted_days }}</td>
             <td>{{ $employee->wage_type }}</td>

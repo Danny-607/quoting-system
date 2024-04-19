@@ -6,7 +6,7 @@
     <thead>
         <tr>
             <th>Quote ID</th>
-            <th>User Name</th>
+            <th>Client Name</th>
             <th>Description</th>
             <th>Services</th>
             <th>Quoted Price</th>
@@ -19,7 +19,7 @@
             <tr>
                 <td>{{ $quote->id }}</td>
                 
-                <td>{{ $quote->user->name }}</td>
+                <td>{{ $quote->user->first_name }} {{$quote->user->last_name}}</td>
                 <td>
                     @livewire('show-more-description', ['quote' => $quote])
                 </td>

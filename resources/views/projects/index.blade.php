@@ -18,7 +18,7 @@
                 @foreach($projects as $project)
                     @if ($project->status == "ongoing" & $project->quote->status =="approved")
                     <tr>
-                        <td>{{ $project->quote->user->first_name }}</td>
+                        <td>{{ $project->quote->user->first_name }} {{ $project->quote->user->last_name }} </td>
                         <td>
                             <ul>
                                 @foreach($project->quote->services as $service)
@@ -29,7 +29,7 @@
                         <td>
                             <ul>
                                 @foreach($project->employees as $employee)
-                                    <li>{{ $employee->user->first_name }}</li>
+                                    <li>{{ $employee->user->first_name }} {{ $employee->user->last_name }}</li>
                                 @endforeach
                             </ul>
                         </td>
@@ -66,7 +66,7 @@
                     @foreach($projects as $project)
                         @if ($project->status == "completed")
                         <tr>
-                            <td>{{ $project->quote->user->first_name }}</td>
+                            <td>{{ $project->quote->user->first_name }} {{ $project->quote->user->last_name }}</td>
                             <td>
                                 <ul>
                                     @foreach($project->quote->services as $service)
@@ -77,7 +77,7 @@
                             <td>
                                 <ul>
                                     @foreach($project->employees as $employee)
-                                        <li>{{ $employee->user->first_name }}</li>
+                                        <li>{{ $employee->user->first_name }} {{ $employee->user->last_name }}</li>
                                     @endforeach
                                 </ul>
                             </td>

@@ -7,7 +7,7 @@
         <label for="user">Select User:</label>
         <select name="user_id" id="user">
             @foreach ($users as $user)
-                <option value="{{ $user->id }}">{{ $user->first_name }}</option>
+                <option value="{{ $user->id }}">{{ $user->first_name }} {{ $user->last_name }}</option>
             @endforeach
         </select>
         <label for="role">Select Role:</label>

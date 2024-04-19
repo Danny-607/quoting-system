@@ -7,7 +7,7 @@
     <label for="user_name">Select the user you want to assign to an employee</label>
     <select name="user_name" id="user_name">
         @foreach ($users as $user)
-            <option value="{{$user->id}}">{{$user->first_name}}</option>
+            <option value="{{$user->id}}">{{ $user->first_name }} {{ $user->last_name }}</option>
         @endforeach
     </select>
     <label for="contracted_hours">Weekly contracted hours</label>
