@@ -68,7 +68,8 @@ class ProjectsController extends Controller
     }
 
     $projectCost = $servicesCost + $labourCost;
-    $projectRevenue = $quote->services->sum('profit') - $projectCost;
+    
+    $projectRevenue = $quote->preliminary_price - $projectCost;
 
     $project = Project::create([
         'quote_id' => $validated['quote_id'],

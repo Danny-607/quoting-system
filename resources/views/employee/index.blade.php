@@ -6,6 +6,7 @@
         <tr>
             <th>User Name</th>
             <th>Contracted Hours</th>
+            <th>Contracted Days</th>
             <th>Wage Type</th>
             <th>Wages</th>
             <th>Actions</th>
@@ -16,6 +17,7 @@
         <tr>
             <td>{{ $employee->user->first_name }}</td>
             <td>{{ $employee->contracted_hours }}</td>
+            <td>{{ $employee->contracted_days }}</td>
             <td>{{ $employee->wage_type }}</td>
             <td>{{ $employee->wage_amount }}</td>
             <td>
@@ -24,7 +26,7 @@
                 <form method="POST" action="{{ route('employees.destroy', $employee->id) }}" style="display: inline-block;">
                     @csrf
                     @method('DELETE')
-                    <button class="delete-btn btn" type="submit" onclick="return confirm('Are you sure you want to delete this employee?')">Delete</button>
+                    <button class="delete-btn btn" type="submit" onclick="return confirm('Are you sure you want to delete this user?')">Delete</button>
                 </form>
                 </div>
             </td>

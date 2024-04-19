@@ -3,12 +3,15 @@
 namespace App\Http\Controllers;
 
 use App\Models\Quote;
+use App\Models\Invoice;
 use App\Models\Service;
+use App\Mail\InvoiceCreated;
 use App\Models\QuoteService;
 use Illuminate\Http\Request;
 use App\Models\ServiceCategory;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 
 class QuotesController extends Controller
 {
@@ -18,8 +21,8 @@ class QuotesController extends Controller
         $user = Auth::user();
         $quotes = Quote::with('services', 'user')->get();
         if ($user) {
-            $username = $user->name;
-            return view('quotes.index', compact('quotes', 'username'));
+            $name = $user->first_name;
+            return view('quotes.index', compact('quotes', 'name'));
         } else {
             return redirect()->route('login');
         }
@@ -31,8 +34,8 @@ class QuotesController extends Controller
         $categories = ServiceCategory::with('services')->get();
         $user = Auth::user();
         if ($user) {
-            $username = $user->name;
-            return view('quotes.create', compact('username', 'services', 'categories'));
+            $name = $user->first_name;
+            return view('quotes.create', compact('name', 'services', 'categories'));
         } else {
             return redirect()->route('login');
         }
@@ -71,13 +74,18 @@ class QuotesController extends Controller
                 'service_id' => $serviceId,
             ]);
         }
-        return redirect()->route('quotes.index')->with('success', 'Project created successfully!');
+        
+        if ($user->hasRole('customer')) {
+            return redirect()->route('home')->with('success', 'Quote submitted successfully!');
+        } else {
+            return redirect()->route('quotes.index')->with('success', 'Quote created and submitted for approval!');
+        }
     }
     public function edit($id)
     {
         $quote = Quote::findOrFail($id);
-        $username = Auth::user()->name;
-        return view('quotes.edit', compact('quote', 'username'));
+        $name = Auth::user()->first_name;
+        return view('quotes.edit', compact('quote', 'name'));
     }
 
     public function update(Request $request, $id)
@@ -95,6 +103,13 @@ class QuotesController extends Controller
     public function accept(Quote $quote)
     {
         $quote->update(['status' => 'approved']);
+        $invoice = Invoice::create([
+            'quote_id' => $quote->id,
+            'amount' => $quote->preliminary_price,
+        ]);
+        $invoice->load('quote.services');
+        // Send invoice by email
+        Mail::to($quote->user->email)->send(new InvoiceCreated($invoice));
         return redirect()->route('projects.create', ['quote' => $quote->id]);
     }
 

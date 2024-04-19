@@ -12,6 +12,8 @@
     </select>
     <label for="contracted_hours">Weekly contracted hours</label>
     <input type="integer" name="contracted_hours">
+    <label for="contracted_days">Contracted days a week</label>
+    <input type="integer" name="contracted_days">
     <label for="wage_type">Hourly or salary</label>
     <select name="wage_type" id="wage_type">
         <option value="hourly">Hourly</option>

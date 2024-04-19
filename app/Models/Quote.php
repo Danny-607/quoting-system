@@ -18,4 +18,8 @@ class Quote extends Model
     public function services(){
         return $this->belongsToMany(Service::class, 'quote_services');
     }
+    public function invoice()
+    {
+        return $this->hasOne(Invoice::class);
+    }
 }

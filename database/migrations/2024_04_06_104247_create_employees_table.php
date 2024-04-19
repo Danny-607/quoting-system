@@ -18,6 +18,7 @@ return new class extends Migration
             ->references('id')->on('users')
             ->onDelete('cascade');
             $table->integer('contracted_hours');
+            $table->integer('contracted_days');
             $table->string('wage_type');
             $table->decimal('wage_amount');
             $table->timestamps();

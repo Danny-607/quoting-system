@@ -40,6 +40,7 @@ class EmployeeController extends Controller
         $validator = Validator::make($request->all(), [
             'user_name' => 'required|exists:users,id', // Ensure the selected user exists in the users table
             'contracted_hours' => 'required|integer|min:0', // Ensure contracted hours is a positive integer
+            'contracted_days' => 'required|integer|min:0', // Ensure contracted days is a positive integer
             'wage_type' => 'required|in:hourly,salary', // Ensure wage type is either hourly or salary
             'wages' => 'required|numeric|min:0', // Ensure wages is a non-negative number
         ]);
@@ -54,6 +55,7 @@ class EmployeeController extends Controller
         $employee = new Employee();
         $employee->user_id = $request->input('user_name');
         $employee->contracted_hours = $request->input('contracted_hours');
+        $employee->contracted_days = $request->input('contracted_days');
         $employee->wage_type = $request->input('wage_type');
         $employee->wage_amount = $request->input('wages');
         $employee->save();

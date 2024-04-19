@@ -16,6 +16,7 @@ class EmployeeSeeder extends Seeder
         Employee::create([
             'user_id' => 1,
             'contracted_hours' => 40,
+            'contracted_days' => 5,
             'wage_type' => 'Hourly',
             'wage_amount' => 15.50,
             'created_at' => now(),
@@ -24,6 +25,7 @@ class EmployeeSeeder extends Seeder
         Employee::create([
             'user_id' => 2,
             'contracted_hours' => 50,
+            'contracted_days' => 5,
             'wage_type' => 'Hourly',
             'wage_amount' => 20,
             'created_at' => now(),
