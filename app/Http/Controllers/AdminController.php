@@ -15,20 +15,18 @@ class AdminController extends Controller
         $users = User::all(); 
         $roles = Role::all(); 
         if ($user){
-            $username = $user->name;
-            return view('admin.index', compact('username','users', 'roles'));
+            $name = $user->first_name;
+            return view('admin.index', compact('name','users', 'roles'));
         } else{
             return redirect()->route('login');
         }
        
         
     }
+
+
     
     public function store(Request $request){
-        $user = User::findOrFail($request->user_id); // Find the user by ID
-        $role = $request->role; // Get the role from the request
-
-        $user->syncRoles($role); // Assign the role to the user
 
         return back()->with('success', 'Role assigned successfully!');
     }

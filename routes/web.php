@@ -4,6 +4,7 @@
 use Spatie\Permission\Models\Role;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\QuoteController;
 use App\Http\Controllers\QuotesController;
@@ -118,6 +119,19 @@ Route::get('/projects/{project}/edit', [ProjectsController::class, 'edit'])->mid
 Route::put('/projects/{project}', [ProjectsController::class, 'update'])->middleware(['auth', 'role:admin|manager'])->name('projects.update');
 
 Route::put('/projects/{project}/completed', [ProjectsController::class, 'complete'])->middleware(['auth', 'role:admin|manager'])->name('projects.complete');
+
+// Users routes
+Route::get('/users/create', [UserController::class, 'create'])->name('users.create');
+
+Route::post('/users', [UserController::class, 'store'])->name('users.store');
+
+Route::get('/users/{id}/edit', [UserController::class, 'edit'])->name('users.edit');
+
+Route::put('/users/{id}', [UserController::class, 'update'])->name('users.update');
+
+Route::delete('/users/{id}/delete', [UserController::class, 'destroy'])->name('users.destroy');
+
+
 
 // Managers routes
 Route::get('/dashboard/manager', [ManagerController::class, 'index'])->middleware(['auth', 'role:admin|manager'])->name('manager.index');
