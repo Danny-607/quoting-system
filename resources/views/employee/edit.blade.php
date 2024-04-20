@@ -1,5 +1,5 @@
 @extends('layouts.dashboard')
-
+@section('title', 'Edit an employee')
 @section('content')
     <form method="POST" action="{{ route('employees.update', $employee->id) }}">
         @csrf

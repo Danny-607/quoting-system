@@ -1,5 +1,5 @@
 @extends('layouts.front-navigation')
-
+@section('title', 'Get a quote')
 @section('content')
     <form action="{{ route('quotes.store') }}" method="POST">
         @csrf

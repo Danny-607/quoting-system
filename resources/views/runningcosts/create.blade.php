@@ -1,5 +1,5 @@
 @extends('layouts.dashboard')
-
+@section('title', 'Create a running cost')
 @section('content')
     <div class="form-container">
         <div class="card">
@@ -28,7 +28,7 @@
                 </div>
 
 
-                <input type="submit" value="Submit">
+                <button class="btn save-btn" type="submit">Submit</button>
                 @if ($errors->any())
                     @foreach ($errors->all() as $error)
                         <p><strong>{{ $error }}</strong></p>

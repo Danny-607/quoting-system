@@ -1,5 +1,5 @@
 @extends('layouts.dashboard')
-
+@section('title', 'Projects overview')
 @section('content')
     <h2>On Going Projects</h2>
     <table class="table">

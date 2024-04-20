@@ -1,5 +1,5 @@
 @extends('layouts.dashboard')
-
+@section('title', 'Create a service')
 @section('content')
     <div class="form-container">
         <div class="card">

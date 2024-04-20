@@ -1,5 +1,5 @@
 @extends('layouts.dashboard')
-
+@section('title', 'Edit a service')
 @section('content')
     <form action="{{ route('services.update', ['service' => $service->id]) }}" method="post">
         @csrf

@@ -1,5 +1,5 @@
 @extends('layouts.dashboard')
-
+@section('title', 'Edit a quote')
 @section('content')
     <form action="{{ route('quotes.update', $quote->id) }}" method="POST">
         @csrf

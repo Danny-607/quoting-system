@@ -1,5 +1,5 @@
 @extends('layouts.dashboard')
-
+@section('title', 'Edit a running cost')
 @section('content')
     <form action="{{ route('runningcosts.update', ['runningcost' => $runningCost->id]) }}" method="post">
         @csrf

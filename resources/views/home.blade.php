@@ -1,5 +1,5 @@
 @extends('layouts.front-navigation')
-
+@section('title', 'Home')
 @section('content')
 <div class="centered-content">
     <h2>AFFORDABLE WEB DESIGN</h2>

@@ -1,5 +1,5 @@
 @extends('layouts.dashboard')
-
+@section('title', 'Services overview')
 @section('content')
 <table>
     <tr>

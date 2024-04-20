@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
     @vite(['resources/sass/style.scss'])
-    <title>Document</title>
+    <title>@yield('title')</title>
 </head>
 
 <body>

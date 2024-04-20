@@ -1,5 +1,5 @@
 @extends('layouts.dashboard')
-
+@section('title', 'Edit a user')
 @section('content')
     <div class="container">
         <h1>Edit User</h1>

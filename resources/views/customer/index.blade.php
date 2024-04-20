@@ -1,5 +1,5 @@
 @extends('layouts.front-navigation')
-
+@section('title', 'Dashboard')
 @section('content')
     <div class="container">
         <h1>Dashboard</h1>

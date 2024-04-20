@@ -1,5 +1,5 @@
 @extends('layouts.dashboard')
-
+@section('title', 'Running costs overview')
 @section('content')
 <table>
     <thead>

@@ -1,5 +1,5 @@
 @extends('layouts.dashboard')
-
+@section('title', 'Dashboard')
 @section('content')
     <h2>Manage Users</h2>
     <div style="overflow-x: auto">

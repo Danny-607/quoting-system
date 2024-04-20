@@ -1,5 +1,5 @@
 @extends('layouts.dashboard')
-
+@section('title', 'Edit roles')
 @section('content')
     <form action="{{ route('admin.role') }}" method="POST">
         @csrf

@@ -1,5 +1,5 @@
 @extends('layouts.dashboard')
-
+@section('title', 'Create an employee')
 @section('content')
     <div class="form-container">
         <div class="card">
