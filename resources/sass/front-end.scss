@@ -96,6 +96,7 @@ button:hover {
 }
 .services-container {
     display: flex;
+    max-width: 600px;
     flex-wrap: wrap;
     margin-bottom: 20px;
 }
@@ -107,6 +108,7 @@ button:hover {
     margin: 5px;
     background-color: #f8f9fa;
     border: 2px solid #ccc;
+    color: black;
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s, border-color 0.3s;
@@ -121,9 +123,9 @@ button:hover {
 }
 
 .service-box input[type="checkbox"]:checked + .box-content {
-    background-color: #007bff; /* Bootstrap primary color */
+    background-color: #0e9b73; 
     color: white;
-    border-color: #0056b3; /* Darker shade of the primary color */
+    border-color: #0056b3; 
 }
 
 .box-content {
@@ -174,6 +176,31 @@ button:hover {
 
 h1, h2 {
     color: #333;
+}
+.form-container {
+    padding-top: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.form-card {
+    width: auto;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    border-radius: 20px;
+    background-color: darken($primary-color, 30%);
+    color: white;
+    border-radius: 10px;
+    min-width: 30%;
+}
+.description-container{
+    display: flex;
+    flex-direction: column;
+
 }
 @media (max-width: 768px) {
     .navbar {
