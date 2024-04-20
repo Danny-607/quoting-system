@@ -10,14 +10,18 @@ $accent-color: #0e9b73;
     box-sizing: border-box;
     font-family: sans-serif;
 }
-body{
+
+body {
     background-color: $primary-color;
     display: grid;
-    grid-template-columns: 200px 1fr; /* Sidebar width and the rest of the page */
+    grid-template-columns: 200px 1fr;
+    /* Sidebar width and the rest of the page */
     grid-template-rows: 100px 1fr;
-    gap: 20px; /* Gap between sidebar and section */
+    gap: 20px;
+    /* Gap between sidebar and section */
     height: 100vh;
 }
+
 .dashboard-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -26,16 +30,21 @@ body{
     padding: 20px;
 }
 
-.profit-section, .ongoing-projects-section, .completed-projects-section, .runningcost-section {
+.profit-section,
+.ongoing-projects-section,
+.completed-projects-section,
+.runningcost-section {
     border: 1px solid #ccc;
     padding: 10px;
     background-color: #f9f9f9;
 }
+
 /* Sidebar navigation styling */
 .sidebar {
     background-color: darken($secondary-color, 5%);
     padding-top: 60px;
-    grid-column: 1; /* Place the sidebar in the first column */
+    grid-column: 1;
+    /* Place the sidebar in the first column */
     grid-row: 1 / span 2;
 }
 
@@ -43,7 +52,8 @@ body{
     list-style-type: none;
     padding: 0;
 }
-.account{
+
+.account {
     background-color: $secondary-color;
 }
 
@@ -52,17 +62,20 @@ body{
     color: white;
     border-radius: 10px;
     margin-top: 10px;
-    font-size: 20px;
+    font-size: 1.6em;
 }
-li{
+
+li {
     list-style-type: none;
 }
+
 .sidebar a {
     display: block;
     border-radius: 5px;
     color: white;
     text-decoration: none;
     padding: 5px 0;
+
 }
 
 /* Hover effect for the links */
@@ -70,7 +83,7 @@ li{
     background-color: darken($primary-color, 70%);
 }
 
-main{
+main {
     grid-row: 2;
 }
 
@@ -80,97 +93,84 @@ table {
     border-collapse: collapse;
     padding: 10px;
     margin-bottom: 20px;
-  }
-  
-  /* Style the table header */
-  thead th {
+
+}
+
+/* Style the table header */
+thead th {
     background-color: #f2f2f2;
     color: #333;
     font-weight: bold;
     padding: 10px;
     text-align: center;
-  }
-  
-  /* Style the table rows */
-  tbody tr {
-    background-color: #fff;
-  }
-  
-  /* Alternate row background color */
-  tbody tr:nth-child(even) {
-    background-color: #f2f2f2;
-  }
-  
-  /* Style the table cells */
-  td {
-    // padding: 10px;
-    text-align: center;
-    
-  }
-  td a {
-    display: inline-block; 
-    text-align: center; 
-    width: 100%; 
-}
-  /* Style the buttons */
-  .action-buttons {
-    display: flex;
-    justify-content: center;
 }
 
-.create-btn{
+/* Style the table rows */
+tbody tr {
+    background-color: #fff;
+}
+
+/* Alternate row background color */
+tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+/* Style the table cells */
+td {
+    padding: 10px;
+    text-align: center;
+
+}
+td a {
+    display: inline-block;
+    text-align: center;
+    width: 100%;
+}
+
+/* Style the buttons */
+.action-buttons {
+    display: flex;
+    justify-content: center;
+
+}
+
+.create-btn {
     background-color: #b86314;
 }
-.save-btn{
+
+.save-btn {
     background-color: #02aa02;
 }
-.delete-btn{
+
+.delete-btn {
     background-color: #ef3c3c;
 }
 
-.edit-btn{
+.edit-btn {
     background-color: #5fb6fd;
 }
-.logout-btn{
+
+.logout-btn {
     width: 100%;
     background-color: #ef3c3c;
     color: white;
-    text-align: center; 
+    text-align: center;
     font-size: 1.6em;
     border-radius: 10px;
     border: none;
     padding: 4px 2px;
     cursor: pointer;
-  }
+}
 
 .container {
     max-width: 600px;
     margin: 0 auto;
     padding: 20px;
     background-color: #f9f9f9;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
 }
 
-form {
-    display: flex;
-    flex-direction: column;
-}
-
-label {
-    margin-bottom: 5px;
-    font-weight: bold;
-}
-
-input[type="text"],
-input[type="email"],
-input[type="password"],
-select {
-    padding: 10px;
-    margin-bottom: 20px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-}
 
 .btn {
     color: #fff;
@@ -178,8 +178,10 @@ select {
     border-radius: 10px;
     text-align: center;
     display: flex;
-    justify-content: center; /* Horizontally center */
-    align-items: center; /* Vertically center */
+    justify-content: center;
+    /* Horizontally center */
+    align-items: center;
+    /* Vertically center */
     width: 150px;
     height: 50px;
     text-decoration: none;
@@ -187,22 +189,96 @@ select {
     margin: 4px 2px;
     cursor: pointer;
     font-weight: bold;
-  }
-  
-  /* Style the links */
-  a {
+}
+
+/* Style the links */
+a {
     color: white;
     text-decoration: none;
-  }
+}
 
+.form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
-  
+.card {
+    width: auto;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    border-radius: 20px;
+    background-color: #333;
+    color: white;
+    border-radius: 10px;
+    min-width: 30%;
+}
+
+.card h2 {
+    margin-bottom: 10px;
+    font-size: 2.2em;
+    text-decoration: underline;
+
+}
+
+.card form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+}
+label{
+    font-size: 1.6em;
+    width: 100%;
+}
+input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 5px;
+    border: 1px solid #DDDDDD;
+    color: #A0A6A3;
+    box-shadow: 1px 5px 9px rgba(211, 211, 211, .7);
+}
+
+select{
+    padding: 10px;
+    width: 100%;
+    height: 40px;
+    margin: 10px;
+    border-radius: 5px;
+    border: 1px solid #DDDDDD;
+    // appearance: none;
+    padding: 0 30px 0 15px;
+    // color: ;
+    background-color: darken(white, 15%);
+    font-size: 1em;
+    
+    box-shadow: 1px 5px 9px rgba(211, 211, 211, .7);
+}
+.checkbox-container{
+    display: flex;
+}
+input[type="checkbox"]{
+    cursor: pointer;
+    height: 25px;
+    width: 25px;
+    border: none;
+    box-shadow: none;
+    position: relative;
+    bottom: 5px;
+}
 /* Media query for responsiveness */
 @media (max-width: 768px) {
-    .sidebar {
-        width: 100%;
-        grid-column: 1 / -1; /* Expand sidebar to full width */
-        padding-top: 10px;
+    body {
+        display: grid;
+        grid-template-columns: 1fr;
     }
+
+    .sidebar {}
 
 }

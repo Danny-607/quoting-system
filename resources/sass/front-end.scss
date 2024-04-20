@@ -14,19 +14,18 @@ body{
 }
 
 .navbar {
-    display: flex;
-    align-items: center; 
-    justify-content: space-between;
-    padding: 10px 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    align-items: center;
     background-color: #051735;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+
 }
 
 .nav-links {
     display: flex;
+    justify-content: center;
     list-style: none;
-    padding-left: 5%;
-    margin-left: 0;  
+    padding-left: 2%;
 }
 
 .nav-links.left li {
@@ -36,7 +35,7 @@ body{
 
 .nav-links.right li {
     margin-left: 10px;  
-
+    
 }
 
 .nav-links li a {
@@ -48,8 +47,10 @@ body{
 }
 
 
-.logo img {
+.logo a {
     height: 100px;
+    display: flex;
+    justify-content: center;
 }
 .centered-content {
     height: 100vh;

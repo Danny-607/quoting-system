@@ -18,8 +18,10 @@ class ServicesController extends Controller
     }
 
     public function create(){
+        $user = Auth::user();
         $categories = ServiceCategory::all();
-        return view('services.create', compact('categories'));
+        $name = $user->first_name;
+        return view('services.create', compact('categories', 'name'));
     }
 
     public function store(Request $request){

@@ -22,7 +22,12 @@
                 @endforeach
             </select>
             <button class="edit-btn btn" type="submit">Update User</button>
+            @if ($errors->any())
+                @foreach ($errors->all() as $error)
+                    <p><strong>{{ $error }}</strong></p>
+                @endforeach
+            @endif
         </form>
     </div>
-    
+
 @endsection

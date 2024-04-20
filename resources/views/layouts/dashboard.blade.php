@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,16 +9,17 @@
     @vite(['resources/sass/style.scss'])
     <title>Document</title>
 </head>
+
 <body>
     <nav class="sidebar">
         <ul>
-            <li class="account">{{strtoupper($name)}}</li>
-            @if(auth()->user()->hasRole('admin'))
+            <li class="account">{{ strtoupper($name) }}</li>
+            @if (auth()->user()->hasRole('admin'))
                 <li><a href="{{ route('admin.index') }}">Dashboard</a></li>
             @elseif (auth()->user()->hasRole('manager'))
                 <li><a href="{{ route('manager.index') }}">Dashboard</a></li>
             @elseif (auth()->user()->hasRole('designer'))
-                <li><a href="{{ route('designer.index') }}">Dashboard</a></li>    
+                <li><a href="{{ route('designer.index') }}">Dashboard</a></li>
             @endif
             <li><a href="{{ route('services.index') }}">Services</a></li>
             <li><a href="{{ route('quotes.index') }}">Quotes</a></li>
@@ -37,4 +39,5 @@
         @yield('content')
     </main>
 </body>
+
 </html>
