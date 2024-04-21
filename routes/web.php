@@ -45,57 +45,66 @@ Route::get('/previous-works', [StaticPagesController::class, 'works'])->name('wo
 // Back-end routes
 
 // Admin routes
-Route::get('/dashboard/admin', [AdminController::class, 'index'])->middleware(['auth','role:admin'])->name('admin.index');
+Route::group(['middleware' => ['auth', 'role:admin', 'permission: view admin dashboard']], function () {
+    Route::get('/dashboard/admin', [AdminController::class, 'index'])->name('admin.index');
 
-Route::post('/admin/role', [AdminController::class, 'store'])->name('admin.role');
+});
 
 
 
 // Services routes
-Route::get('/services', [ServicesController::class, 'index'])->middleware(['auth', 'role:admin|manager'])->name('services.index');
+Route::group(['middleware' => ['auth', 'role:admin|manager', 'permission:manage services']], function () {
+    Route::get('/services', [ServicesController::class, 'index'])->name('services.index');
 
-Route::get('/services/create', [ServicesController::class, 'create'])->middleware(['auth', 'role:admin|manager'])->name('services.create');
+    Route::get('/services/create', [ServicesController::class, 'create'])->name('services.create');
 
-Route::post('/services', [ServicesController::class, 'store'])->middleware(['auth', 'role:admin|manager'])->name('services.store');
+    Route::post('/services', [ServicesController::class, 'store'])->name('services.store');
 
-Route::get('/services/{service}/edit', [ServicesController::class, 'edit'])->middleware(['auth', 'role:admin|manager'])->name('services.edit');
+    Route::get('/services/{service}/edit', [ServicesController::class, 'edit'])->name('services.edit');
 
-Route::put('/services/{service}/update', [ServicesController::class, 'update'])->middleware(['auth', 'role:admin|manager'])->name('services.update');
+    Route::put('/services/{service}/update', [ServicesController::class, 'update'])->name('services.update');
 
-Route::delete('/services/{service}/delete', [ServicesController::class, 'destroy'])->middleware(['auth', 'role:admin|manager'])->name('services.destroy');
+    Route::delete('/services/{service}/delete', [ServicesController::class, 'destroy'])->name('services.destroy');
+});
+
 
 // Quotes routes
+Route::group(['middleware' => ['auth', 'role:admin|manager', 'permission:manage quotes']], function () {
+    Route::get('/quotes', [QuotesController::class, 'index'])->name('quotes.index');
 
-Route::get('/quotes', [QuotesController::class, 'index'])->middleware(['auth', 'role:admin|manager'])->name('quotes.index');
+    Route::post('/quotes', [QuotesController::class, 'store'])->name('quotes.store');
 
-Route::get('/quotes/create', [QuotesController::class, 'create'])->name('quotes.create');
+    Route::put('/quotes/{quote}/accept', [QuotesController::class, 'accept'])->name('quotes.accept');
 
-Route::post('/quotes', [QuotesController::class, 'store'])->name('quotes.store');
+    Route::delete('quotes/{quote}/delete', [QuotesController::class, 'destroy'])->name('quotes.destroy');
 
-Route::put('/quotes/{quote}/accept', [QuotesController::class, 'accept'])->middleware(['auth', 'role:admin|manager'])->name('quotes.accept');
+    Route::get('/quotes/{id}/edit', [QuotesController::class, 'edit'])->name('quotes.edit');
 
-Route::delete('quotes/{quote}/delete', [QuotesController::class, 'destroy'])->middleware(['auth', 'role:admin|manager'])->name('quotes.destroy');
-
-Route::get('/quotes/{id}/edit', [QuotesController::class, 'edit'])->middleware(['auth', 'role:admin|manager'])->name('quotes.edit');
-
-Route::put('/quotes/{id}', [QuotesController::class, 'update'])->middleware(['auth', 'role:admin|manager'])->name('quotes.update');
+    Route::put('/quotes/{id}', [QuotesController::class, 'update'])->name('quotes.update');
+});
+Route::get('/quotes/create', [QuotesController::class, 'create'])->middleware(['permission:create quotes'])->name('quotes.create');
 
 
 // Employee Routes
+Route::group(['middleware' => ['auth', 'role:admin|manager', 'permission:manage employees']], function () {
+    Route::get('/employees', [EmployeeController::class, 'index'])->name('employees.index');
 
-Route::get('/employees', [EmployeeController::class, 'index'])->middleware(['auth', 'role:admin|manager'])->name('employees.index');
+    Route::get('/employees/create', [EmployeeController::class, 'create'])->name('employees.create');
 
-Route::get('/employees/create', [EmployeeController::class, 'create'])->middleware(['auth', 'role:admin|manager'])->name('employees.create');
+    Route::post('/employees', [EmployeeController::class, 'store'])->name('employees.store');
 
-Route::post('/employees', [EmployeeController::class, 'store'])->middleware(['auth', 'role:admin|manager'])->name('employees.store');
+    Route::get('/employees/{employee}/edit', [EmployeeController::class, 'edit'])->name('employees.edit');
 
-Route::get('/employees/{employee}/edit', [EmployeeController::class, 'edit'])->middleware(['auth', 'role:admin|manager'])->name('employees.edit');
+    Route::put('/employees/{employee}', [EmployeeController::class, 'update'])->name('employees.update');
 
-Route::put('/employees/{employee}', [EmployeeController::class, 'update'])->middleware(['auth', 'role:admin|manager'])->name('employees.update');
+    Route::delete('/employees/{employee}/delete', [EmployeeController::class, 'destroy'])->name('employees.destroy');
+});
 
-Route::delete('/employees/{employee}/delete', [EmployeeController::class, 'destroy'])->middleware(['auth', 'role:admin|manager'])->name('employees.destroy');
 
 // Running Costs Routes
+Route::group(['middleware' => ['auth', 'role:admin|manager', 'permission:manage running costs']], function () {
+
+});
 Route::get('/runningcosts', [RunningCostsController::class, 'index'])->middleware(['auth', 'role:admin|manager'])->name('runningcosts.index');
 
 Route::get('/runningcosts/create', [RunningCostsController::class, 'create'])->middleware(['auth', 'role:admin|manager'])->name('runningcosts.create');
@@ -109,38 +118,52 @@ Route::put('/runningcosts/{runningcost}', [RunningCostsController::class, 'updat
 Route::delete('/runningcosts/{runningcost}/delete', [RunningCostsController::class, 'destroy'])->middleware(['auth', 'role:admin|manager'])->name('runningcosts.destroy');
 
 // Projects Routes
-Route::get('/projects', [ProjectsController::class, 'index'])->middleware(['auth', 'role:admin|manager'])->name('projects.index');
+Route::group(['middleware' => ['auth', 'role:admin|manager', 'permission:manage projects']], function () {
+    Route::get('/projects', [ProjectsController::class, 'index'])->name('projects.index');
 
-Route::get('/projects/{quote}/create', [ProjectsController::class, 'create'])->middleware(['auth', 'role:admin|manager'])->name('projects.create');
+    Route::get('/projects/{quote}/create', [ProjectsController::class, 'create'])->name('projects.create');
+    
+    Route::post('/projects', [ProjectsController::class, 'store'])->name('projects.store');
+    
+    Route::get('/projects/{project}/edit', [ProjectsController::class, 'edit'])->name('projects.edit');
+    
+    Route::put('/projects/{project}', [ProjectsController::class, 'update'])->name('projects.update');
+    
+    Route::put('/projects/{project}/completed', [ProjectsController::class, 'complete'])->name('projects.complete');
+    
+    Route::delete('/projects/{project}/delete', [ProjectsController::class, 'destroy'])->name('projects.destroy');
+});
 
-Route::post('/projects', [ProjectsController::class, 'store'])->middleware(['auth', 'role:admin|manager'])->name('projects.store');
-
-Route::get('/projects/{project}/edit', [ProjectsController::class, 'edit'])->middleware(['auth', 'role:admin|manager'])->name('projects.edit');
-
-Route::put('/projects/{project}', [ProjectsController::class, 'update'])->middleware(['auth', 'role:admin|manager'])->name('projects.update');
-
-Route::put('/projects/{project}/completed', [ProjectsController::class, 'complete'])->middleware(['auth', 'role:admin|manager'])->name('projects.complete');
-
-Route::delete('/projects/{project}/delete', [ProjectsController::class, 'destroy'])->middleware(['auth', 'role:admin|manager'])->name('projects.destroy');
 
 // Users routes
-Route::get('/users/create', [UserController::class, 'create'])->name('users.create');
+Route::group(['middleware' => ['auth', 'role:admin', 'permission:manage users']], function () {
+    Route::get('/users/create', [UserController::class, 'create'])->name('users.create');
 
-Route::post('/users', [UserController::class, 'store'])->name('users.store');
+    Route::post('/users', [UserController::class, 'store'])->name('users.store');
+    
+    Route::get('/users/{id}/edit', [UserController::class, 'edit'])->name('users.edit');
+    
+    Route::put('/users/{id}', [UserController::class, 'update'])->name('users.update');
+    
+    Route::delete('/users/{id}/delete', [UserController::class, 'destroy'])->name('users.destroy');
+});
 
-Route::get('/users/{id}/edit', [UserController::class, 'edit'])->name('users.edit');
-
-Route::put('/users/{id}', [UserController::class, 'update'])->name('users.update');
-
-Route::delete('/users/{id}/delete', [UserController::class, 'destroy'])->name('users.destroy');
 
 // Roles routes
-Route::get('/roles/create', [RolesController::class, 'create'])->name('roles.create');
+Route::group(['middleware' => ['auth', 'role:admin', 'permission:manage roles']], function () {
+    
+    Route::get('/roles/create', [RolesController::class, 'create'])->name('roles.create');
 
-Route::get('/roles/{id}/edit', [RolesController::class, 'edit'])->name('roles.edit');
+    Route::get('/roles/{id}/edit', [RolesController::class, 'edit'])->name('roles.edit');
 
+});
 
 // Managers routes
-Route::get('/dashboard/manager', [ManagerController::class, 'index'])->middleware(['auth', 'role:admin|manager'])->name('manager.index');
+Route::group(['middleware' => ['auth', 'role:manager', 'permission:view manager dashboard']], function () {
+    Route::get('/dashboard/manager', [ManagerController::class, 'index'])->name('manager.index');
+});
 
-Route::get('/dashboard/customer', [CustomerController::class, 'index'])->middleware(['auth', 'role:customer'])->name('customer.index');
+Route::group(['middleware' => ['auth', 'role:customer', 'permission:view customer dashboard']], function () {
+    Route::get('/dashboard/customer', [CustomerController::class, 'index'])->name('customer.index');
+    
+});
