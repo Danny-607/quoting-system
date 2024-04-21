@@ -1,7 +1,8 @@
 @extends('layouts.dashboard')
 @section('title', 'Edit a user')
 @section('content')
-    <div class="container">
+    <div class="form-container">
+        <div class="card">
         <h1>Edit User</h1>
         <form action="{{ route('users.update', $user->id) }}" method="POST">
             @method('PUT')
@@ -14,7 +15,7 @@
             <input type="text" name="phone_number" id="phone_number" value="{{ $user->phone_number }}" required>
             <label for="email">Email:</label>
             <input type="email" name="email" id="email" value="{{ $user->email }}" required>
-            <label for="password">New Password (leave blank if not changing):</label>
+            <label for="password">New Password:</label>
             <input type="password" name="password" id="password">
             <select name="role" id="role">
                 @foreach ($roles as $role)
@@ -29,5 +30,5 @@
             @endif
         </form>
     </div>
-
+</div>
 @endsection

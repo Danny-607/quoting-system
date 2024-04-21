@@ -1,6 +1,8 @@
 @extends('layouts.dashboard')
 @section('title', 'Edit a quote')
 @section('content')
+<div class="form-container">
+    <div class="card">
     <form action="{{ route('quotes.update', $quote->id) }}" method="POST">
         @csrf
         @method('PUT')
@@ -24,4 +26,6 @@
             @endforeach
         @endif
     </form>
+    </div>
+</div>
 @endsection

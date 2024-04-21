@@ -43,6 +43,12 @@
                                     @method('PUT')
                                     <button type="submit" class="btn save-btn">Complete Project</button>
                                 </form>
+                                <form method="POST" action="{{ route('projects.destroy', $project->id) }}">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button class="delete-btn btn" type="submit">Delete</button>
+                                </form>
+                                <a class="edit-btn btn" href="{{Route('projects.edit', $project->id)}}">Edit</a>
                             </div>
                         </td>
                     </tr>
@@ -50,7 +56,7 @@
             @endforeach
         </tbody>
     </table>
-
+    <h2>Completed projects</h2>
     <table class="table">
         <thead>
             <tr>
@@ -60,6 +66,7 @@
                 <th>Project Cost</th>
                 <th>Project Revenue</th>
                 <th>Date completed</th>
+                <th>Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -84,6 +91,16 @@
                         <td>{{ $project->project_cost }}</td>
                         <td>{{ $project->project_revenue }}</td>
                         <td>{{ $project->actual_end_date }}</td>
+                        <td>
+                            <div class="action-buttons">
+                                <form method="POST" action="{{ route('projects.destroy', $project->id) }}">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button class="delete-btn btn" type="submit">Delete</button>
+                                </form>
+                                <a class="edit-btn btn" href="{{Route('projects.edit', $project->id)}}">Edit</a>
+                            </div>
+                        </td>
                     </tr>
                 @endif
             @endforeach

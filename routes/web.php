@@ -7,6 +7,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\QuoteController;
+use App\Http\Controllers\RolesController;
 use App\Http\Controllers\QuotesController;
 use App\Http\Controllers\ManagerController;
 use App\Http\Controllers\CustomerController;
@@ -120,6 +121,8 @@ Route::put('/projects/{project}', [ProjectsController::class, 'update'])->middle
 
 Route::put('/projects/{project}/completed', [ProjectsController::class, 'complete'])->middleware(['auth', 'role:admin|manager'])->name('projects.complete');
 
+Route::delete('/projects/{project}/delete', [ProjectsController::class, 'destroy'])->middleware(['auth', 'role:admin|manager'])->name('projects.destroy');
+
 // Users routes
 Route::get('/users/create', [UserController::class, 'create'])->name('users.create');
 
@@ -131,6 +134,10 @@ Route::put('/users/{id}', [UserController::class, 'update'])->name('users.update
 
 Route::delete('/users/{id}/delete', [UserController::class, 'destroy'])->name('users.destroy');
 
+// Roles routes
+Route::get('/roles/create', [RolesController::class, 'create'])->name('roles.create');
+
+Route::get('/roles/{id}/edit', [RolesController::class, 'edit'])->name('roles.edit');
 
 
 // Managers routes

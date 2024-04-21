@@ -1,6 +1,8 @@
 @extends('layouts.dashboard')
 @section('title', 'Edit a running cost')
 @section('content')
+<div class="form-container">
+    <div class="card">
     <form action="{{ route('runningcosts.update', ['runningcost' => $runningCost->id]) }}" method="post">
         @csrf
         @method('put')
@@ -28,11 +30,13 @@
             {{ $runningCost->repeating ? 'checked' : '' }}>
 
         <button type="submit">Update Running Cost</button>
-    </form>
-
-    @if ($errors->any())
+        @if ($errors->any())
         @foreach ($errors->all() as $error)
             <p><strong>{{ $error }}</strong></p>
         @endforeach
     @endif
 @endsection
+    </form>
+    </div>
+</div>
+

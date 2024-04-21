@@ -1,6 +1,8 @@
 @extends('layouts.dashboard')
 @section('title', 'Edit a project')
 @section('content')
+<div class="form-container">
+    <div class="card">
     <h1>Edit Project</h1>
 
     <form action="{{ route('projects.update', $project->id) }}" method="POST">
@@ -35,4 +37,6 @@
             @endforeach
         @endif
     </form>
+    </div>
+</div>
 @endsection

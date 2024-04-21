@@ -63,7 +63,7 @@ class UserController extends Controller
             'last_name' => 'required|string|max:255',
             'phone_number' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users,email,' . $user->id,
-            'password' => 'sometimes|string|min:8',
+            'password' => 'required|string|min:8',
         ]);
         $role = $request->role; // Get the role from the request
 
