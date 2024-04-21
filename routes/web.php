@@ -45,7 +45,7 @@ Route::get('/previous-works', [StaticPagesController::class, 'works'])->name('wo
 // Back-end routes
 
 // Admin routes
-Route::group(['middleware' => ['auth', 'role:admin', 'permission: view admin dashboard']], function () {
+Route::group(['middleware' => ['auth', 'role:admin', 'permission:view admin dashboard']], function () {
     Route::get('/dashboard/admin', [AdminController::class, 'index'])->name('admin.index');
 
 });
@@ -150,12 +150,12 @@ Route::group(['middleware' => ['auth', 'role:admin', 'permission:manage users']]
 
 
 // Roles routes
-Route::group(['middleware' => ['auth', 'role:admin', 'permission:manage roles']], function () {
-    
+Route::group(['middleware' => ['auth', 'role:admin']], function () {
     Route::get('/roles/create', [RolesController::class, 'create'])->name('roles.create');
-
-    Route::get('/roles/{id}/edit', [RolesController::class, 'edit'])->name('roles.edit');
-
+    Route::post('/roles', [RolesController::class, 'store'])->name('roles.store');
+    Route::get('/roles/{role}/edit', [RolesController::class, 'edit'])->name('roles.edit');
+    Route::put('/roles/{role}', [RolesController::class, 'update'])->name('roles.update');
+    Route::delete('/roles/{role}', [RolesController::class, 'destroy'])->name('roles.destroy');
 });
 
 // Managers routes
