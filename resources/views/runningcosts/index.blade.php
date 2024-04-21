@@ -1,6 +1,9 @@
 @extends('layouts.dashboard')
 @section('title', 'Running costs overview')
 @section('content')
+@can('manage running costs')
+    
+
 <table>
     <thead>
         <tr>
@@ -42,4 +45,5 @@
 </table>
 
 <a class="create-btn btn" href="{{route('runningcosts.create')}}">Add an expense</a>
+@endcan
 @endsection

@@ -1,6 +1,9 @@
 @extends('layouts.dashboard')
 @section('title', 'Edit a quote')
 @section('content')
+@can('manage quotes')
+    
+
 <div class="form-container">
     <div class="card">
     <form action="{{ route('quotes.update', $quote->id) }}" method="POST">
@@ -19,7 +22,7 @@
             <option value="unapproved" {{ $quote->status === 'unapproved' ? 'selected' : '' }}>Unapproved</option>
         </select>
 
-        <button type="submit">Update Quote</button>
+        <button class="btn save-btn" type="submit">Update Quote</button>
         @if ($errors->any())
             @foreach ($errors->all() as $error)
                 <p><strong>{{ $error }}</strong></p>
@@ -28,4 +31,5 @@
     </form>
     </div>
 </div>
+@endcan
 @endsection

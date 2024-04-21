@@ -1,6 +1,9 @@
 @extends('layouts.dashboard')
 @section('title', 'Dashboard')
 @section('content')
+@can('view admin dashboard')
+    
+
     <h2>Manage Users</h2>
     <div>
         <table>
@@ -39,4 +42,5 @@
     @if (session()->has('success'))
         <p class="success-msg">{{ session('success') }}</p>
     @endif
+    @endcan
 @endsection

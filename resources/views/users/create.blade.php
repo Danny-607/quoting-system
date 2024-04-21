@@ -1,6 +1,8 @@
 @extends('layouts.dashboard')
 @section('title', 'Create a user')
 @section('content')
+@can('manage users')
+
     <div class="form-container">
         <div class="card">
             <h1>Create New User</h1>
@@ -30,4 +32,5 @@
             </form>
         </div>
     </div>
+    @endcan
 @endsection

@@ -1,6 +1,8 @@
 @extends('layouts.dashboard')
 @section('title', 'Edit an employee')
 @section('content')
+@can('manage employees')
+
     <div class="form-container">
         <div class="card">
             <form method="POST" action="{{ route('employees.update', $employee->id) }}">
@@ -34,4 +36,5 @@
             </form>
         </div>
     </div>
+    @endcan
 @endsection

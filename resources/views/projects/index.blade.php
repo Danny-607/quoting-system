@@ -1,6 +1,8 @@
 @extends('layouts.dashboard')
 @section('title', 'Projects overview')
 @section('content')
+@can('manage projects')
+
     <h2>On Going Projects</h2>
     <table class="table">
         <thead>
@@ -106,4 +108,5 @@
             @endforeach
         </tbody>
     </table>
+    @endcan
 @endsection

@@ -1,6 +1,8 @@
 @extends('layouts.dashboard')
 @section('title', 'Services overview')
 @section('content')
+@can('manage services')
+
 <table>
     <tr>
         <th>ID</th>
@@ -38,4 +40,5 @@
     {{ session('success') }}
 @endif</p>
 <a class="create-btn btn " href="{{route('services.create')}}">Create a service</a>
+@endcan
 @endsection

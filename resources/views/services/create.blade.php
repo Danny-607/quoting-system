@@ -1,6 +1,9 @@
 @extends('layouts.dashboard')
 @section('title', 'Create a service')
 @section('content')
+@can('manage services')
+    
+
     <div class="form-container">
         <div class="card">
             <h2>Create a new service</h2>
@@ -32,6 +35,6 @@
 
         </div>
     </div>
-
+    @endcan
 
 @endsection

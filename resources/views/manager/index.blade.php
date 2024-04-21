@@ -1,6 +1,9 @@
 @extends('layouts.dashboard')
 @section('title', 'Dashboard')
 @section('content')
+@can('view manager dashboard')
+    
+
     <h1>Dashboard</h1>
     <div class="dashboard-grid">
         <!-- Profit Section -->
@@ -91,4 +94,5 @@
 
 
     </div>
+    @endcan
 @endsection

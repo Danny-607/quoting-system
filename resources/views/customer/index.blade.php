@@ -1,6 +1,9 @@
 @extends('layouts.front-navigation')
 @section('title', 'Dashboard')
 @section('content')
+@can('view customer dashboard')
+    
+
     <div class="container">
         <h1>Dashboard</h1>
         <div class="row">
@@ -36,4 +39,5 @@
     </div>
     </div>
     </div>
+    @endcan
 @endsection

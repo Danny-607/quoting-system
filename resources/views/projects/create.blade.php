@@ -1,7 +1,7 @@
 @extends('layouts.dashboard')
 @section('title', 'Create a project')
 @section('content')
-
+@can('manage projects')
     <div class="form-container">
         <div class="card">
             <h1>Create Project</h1>
@@ -38,4 +38,5 @@
             </form>
         </div>
     </div>
+    @endcan
 @endsection

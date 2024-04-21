@@ -1,6 +1,8 @@
 @extends('layouts.front-navigation')
 @section('title', 'Get a quote')
 @section('content')
+@can('create quotes')
+
     <div class="form-container">
         <div class="form-card">
             <h2>Select from a wide range of services</h2>
@@ -34,4 +36,5 @@
             </form>
         </div>
     </div>
+    @endcan
 @endsection

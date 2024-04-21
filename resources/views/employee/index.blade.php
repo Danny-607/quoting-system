@@ -1,6 +1,8 @@
 @extends('layouts.dashboard')
 @section('title', 'Employees')
 @section('content')
+@can('manage employees')
+
     <table>
         <thead>
             <tr>
@@ -37,4 +39,5 @@
         </tbody>
     </table>
     <a class="create-btn btn" href="{{ Route('employees.create') }}">Add a new employee</a>
+    @endcan
 @endsection

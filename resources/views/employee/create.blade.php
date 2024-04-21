@@ -1,6 +1,9 @@
 @extends('layouts.dashboard')
 @section('title', 'Create an employee')
 @section('content')
+@can('manage employees')
+    
+
     <div class="form-container">
         <div class="card">
             <h2>Create an employee</h2>
@@ -34,4 +37,5 @@
             </form>
         </div>
     </div>
+    @endcan
 @endsection

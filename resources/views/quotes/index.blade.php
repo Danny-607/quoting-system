@@ -1,7 +1,7 @@
 @extends('layouts.dashboard')
 @section('title', 'Quotes overview')
 @section('content')
-
+@can('manage quotes')
 <table>
     <thead>
         <tr>
@@ -50,4 +50,5 @@
     </tbody>
 </table>
 <a class="create-btn btn" href="{{Route('quotes.create')}}">Create a new quote</a>
+@endcan
 @endsection

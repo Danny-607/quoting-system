@@ -1,6 +1,9 @@
 @extends('layouts.dashboard')
 @section('title', 'Create a running cost')
 @section('content')
+@can ('manage running costs')
+    
+
     <div class="form-container">
         <div class="card">
             <h2>Add Running Cost</h2>
@@ -37,4 +40,5 @@
             </form>
         </div>
     </div>
+    @endcan
 @endsection

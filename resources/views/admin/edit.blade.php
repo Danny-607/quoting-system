@@ -1,6 +1,9 @@
 @extends('layouts.dashboard')
 @section('title', 'Edit roles')
 @section('content')
+@can('manage roles')
+    
+
     <div class="form-container">
         <div class="card">
             <form action="{{ route('admin.role') }}" method="POST">
@@ -27,4 +30,5 @@
             </form>
         </div>
     </div>
+    @endcan
 @endsection
