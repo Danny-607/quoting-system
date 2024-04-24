@@ -12,8 +12,6 @@
 </head>
 <nav class="navbar">
     <ul class="nav-links left">
-        <li><a href="{{ route('about') }}">About Us</a></li>
-        <li><a href="{{ route('works') }}">Previous Works</a></li>
         <li><a href="{{ route('quotes.create') }}">Get a Quote</a></li>
     </ul>
 

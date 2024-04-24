@@ -36,9 +36,6 @@ Auth::routes();
 
 Route::get('/home', [StaticPagesController::class, 'home'])->name('home');
 
-Route::get('/about-us', [StaticPagesController::class, 'about'])->name('about');
-
-Route::get('/previous-works', [StaticPagesController::class, 'works'])->name('works');
 
 
 
@@ -72,7 +69,7 @@ Route::group(['middleware' => ['auth', 'role:admin|manager', 'permission:manage 
 Route::group(['middleware' => ['auth', 'role:admin|manager', 'permission:manage quotes']], function () {
     Route::get('/quotes', [QuotesController::class, 'index'])->name('quotes.index');
 
-    Route::post('/quotes', [QuotesController::class, 'store'])->name('quotes.store');
+    
 
     Route::put('/quotes/{quote}/accept', [QuotesController::class, 'accept'])->name('quotes.accept');
 
@@ -82,6 +79,7 @@ Route::group(['middleware' => ['auth', 'role:admin|manager', 'permission:manage 
 
     Route::put('/quotes/{id}', [QuotesController::class, 'update'])->name('quotes.update');
 });
+Route::post('/quotes', [QuotesController::class, 'store'])->middleware(['permission:create quotes'])->name('quotes.store');
 Route::get('/quotes/create', [QuotesController::class, 'create'])->middleware(['permission:create quotes'])->name('quotes.create');
 
 

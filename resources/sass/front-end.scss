@@ -135,9 +135,10 @@ button:hover {
     height: 100%;
     transition: background-color 0.3s, color 0.3s;
 }
-.container {
+.dashboard-container {
     width: 30%;
     margin: 20px auto;
+    justify-content: left;
 }
 
 .card {
