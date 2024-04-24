@@ -15,7 +15,7 @@ class RunningCostCest
         
         $I->see('Password');
         $I->fillField('password', "password");
-        $I->click('login');
+        $I->click('Login');
     }
     public function createRunningCost(AcceptanceTester $I)
     {

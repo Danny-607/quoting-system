@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Project extends Model
 {
-    protected $fillable = ['quote_id', 'start_date','expected_end_date', 'actual_end_date', 'end_date', 'project_cost', 'project_revenue', 'status'];
+    protected $fillable = ['quote_id', 'start_date','expected_end_date', 'actual_end_date', 'project_cost', 'project_revenue', 'status'];
 
     public function quote()
     {

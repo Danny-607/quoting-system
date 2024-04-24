@@ -16,7 +16,7 @@ class ServiceCest
         
         $I->see('Password');
         $I->fillField('password', "password");
-        $I->click('login');
+        $I->click('Login');
     }
 
 

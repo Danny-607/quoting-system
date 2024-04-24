@@ -23,7 +23,7 @@
                         <option value="{{ $role->name }}">{{ $role->name }}</option>
                     @endforeach
                 </select>
-                <button class="btn submit" type="submit">Create User</button>
+                <button class="btn save-btn" type="submit">Create User</button>
                 @if ($errors->any())
                     @foreach ($errors->all() as $error)
                         <p><strong>{{ $error }}</strong></p>

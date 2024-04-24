@@ -29,7 +29,7 @@
                 <label for="employees">Assign Employees</label>
 
                 @livewire('add-employee')
-                <button type="submit" class="">Create Project</button>
+                <button type="submit" class="btn save-btn">Create Project</button>
                 @if ($errors->any())
                     @foreach ($errors->all() as $error)
                         <p><strong>{{ $error }}</strong></p>

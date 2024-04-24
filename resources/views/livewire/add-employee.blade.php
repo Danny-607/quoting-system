@@ -8,5 +8,6 @@
             </select>
         </div>
     @endfor
-    <button type="button" wire:click="addEmployee">Add another employee</button>
+    <button type="button" class="btn create-btn" wire:click="addEmployee">Add another employee</button>
 </div>
+

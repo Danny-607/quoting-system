@@ -37,7 +37,7 @@
                         </div>
 
                         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                            <button type="submit" class="btn btn-primary me-md-2">{{ __('Login') }}</button>
+                            <button type="submit" class="btn btn-primary me-md-2" id="login">{{ __('Login') }}</button>
                             @if (Route::has('password.request'))
                                 <a class="btn btn-link" href="{{ route('password.request') }}">
                                     {{ __('Forgot Your Password?') }}

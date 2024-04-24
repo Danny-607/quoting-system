@@ -15,7 +15,7 @@ class QuoteCest
         
         $I->see('Password');
         $I->fillField('password', "password");
-        $I->click('login');
+        $I->click('Login');
     }
 
     public function createQuote(AcceptanceTester $I){
