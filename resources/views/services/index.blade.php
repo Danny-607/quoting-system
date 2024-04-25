@@ -28,7 +28,7 @@
                 <form method="post" action="{{route('services.destroy', ['service' => $service->id])}}" >
                     @csrf
                     @method('delete')
-                    <input type="submit" class="delete-btn btn" value="Delete">
+                    <input type="submit" class="delete-btn btn" name="delete" value="Delete">
                 </form>
             </div>
         </td>

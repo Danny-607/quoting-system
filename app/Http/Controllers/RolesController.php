@@ -53,8 +53,14 @@ class RolesController extends Controller
 
     public function edit(Role $role)
     {
+        $user = Auth::user();
         $permissions = Permission::all();
-        return view('roles.edit', compact('role', 'permissions'));
+        if ($user) {
+            $name = $user->first_name;
+            return view('roles.edit', compact('name', 'role', 'permissions'));
+        } else {
+            return redirect()->route('login');
+        }
     }
 
     public function update(Request $request, Role $role)

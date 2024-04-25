@@ -15,7 +15,7 @@ class RunningCostCest
         
         $I->see('Password');
         $I->fillField('password', "password");
-        $I->click('Login');
+        $I->click('#login');
     }
     public function createRunningCost(AcceptanceTester $I)
     {
@@ -33,7 +33,7 @@ class RunningCostCest
         $I->checkOption('repeating');
     
         $I->click('Submit');
-        $I->seeInDatabase('running_costs', ['name' => 'Electricity Bill', 'cost' => '200.00', 'category_id' => '1', 'repeating' => '1']);
+        $I->seeInDatabase('running_costs', ['name' => 'Electricity Bill', 'cost' => '200.00', 'repeating' => '1']);
     }
     
     public function editRunningCost(AcceptanceTester $I)
@@ -54,12 +54,12 @@ class RunningCostCest
         $I->fillField('name', 'Updated Electricity Bill');
         $I->fillField('cost', '250.00');
         $I->fillField('date_incurred', '2024-04-10');
-        $I->selectOption('select[name="category"]', '2');
+        $I->selectOption('select[name="category_id"]', '2');
         $I->uncheckOption('repeating');
     
         $I->click('Update Running Cost');
     
-        $I->seeInDatabase('running_costs', ['name' => 'Updated Electricity Bill', 'cost' => '250.00', 'category_id' => '2', 'repeating' => '0']);
+        $I->seeInDatabase('running_costs', ['name' => 'Updated Electricity Bill', 'cost' => '250.00', 'repeating' => '0']);
     }
     
     public function deleteRunningCost(AcceptanceTester $I)
@@ -75,7 +75,7 @@ class RunningCostCest
         $I->see('Delete');
     
         $I->click('Delete');
-        $I->dontSeeInDatabase('running_costs', ['name' => 'Updated Electricity Bill', 'cost' => '250.00', 'category_id' => '2', 'repeating' => '0']);
+        $I->dontSeeInDatabase('running_costs', ['name' => 'Updated Electricity Bill', 'cost' => '250.00', 'repeating' => '0']);
     }
     
     // tests

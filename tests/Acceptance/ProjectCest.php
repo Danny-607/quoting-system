@@ -15,7 +15,7 @@ class ProjectCest
         
         $I->see('Password');
         $I->fillField('password', "password");
-        $I->click('Login');
+        $I->click('#login');
     }
 
     // tests

@@ -15,7 +15,7 @@ class UserCest
         
         $I->see('Password');
         $I->fillField('password', "password");
-        $I->click('Login');
+        $I->click('#login');
     }
 
     // tests

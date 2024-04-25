@@ -16,7 +16,6 @@
                 <p>{{ $month }}: £{{ $profit }}</p>
             @endforeach
         </div>
-        <!-- runningcost Section -->
         <!-- Running Costs Section -->
         <div class="runningcost-section">
             <h2>Running Costs</h2>

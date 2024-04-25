@@ -19,7 +19,7 @@ class RoleCest
     }
 
     // tests
-    public function testRoles(AcceptanceTester $I)
+    public function createRoles(AcceptanceTester $I)
     {
         $I->amOnPage('/dashboard/admin');
         $I->see('Admin Dashboard');
@@ -32,5 +32,16 @@ class RoleCest
         $I->click('Create Role');
         
         $I->seeInDatabase('roles', ['name' => 'example_role']);
+    }
+
+    public function createRoleWithInvalidData(AcceptanceTester $I){
+        $I->amOnPage('/dashboard/admin');
+        $I->see('Admin Dashboard');
+
+        $I->click('Create a new role');
+        $I->seeCurrentUrlEquals('/roles/create');
+
+        $I->click('Create Role');
+        $I->see('The name field is required.');
     }
 }

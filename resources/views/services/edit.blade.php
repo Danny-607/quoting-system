@@ -30,7 +30,7 @@
                         @endforeach
                     </select>
 
-                    <button type="submit">Update Service</button>
+                    <button class="btn save-btn" type="submit">Update Service</button>
                     @if ($errors->any())
                         @foreach ($errors->all() as $error)
                             <p><strong>{{ $error }}</strong></p>

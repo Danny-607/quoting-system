@@ -28,7 +28,7 @@
                 <label for="wages">Wages</label>
                 <input type="decimal" name="wages">
 
-                <button class="btn save-btn" type="submit">Submit</button>
+                <button class="btn save-btn" type="submit">Create Employee</button>
                 @if ($errors->any())
                     @foreach ($errors->all() as $error)
                         <p><strong>{{ $error }}</strong></p>

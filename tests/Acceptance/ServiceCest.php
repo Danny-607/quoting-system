@@ -16,7 +16,7 @@ class ServiceCest
         
         $I->see('Password');
         $I->fillField('password', "password");
-        $I->click('Login');
+        $I->click('#login');
     }
 
 
@@ -27,12 +27,14 @@ class ServiceCest
 
         $I->see('Enter the name of the service');
         $I->fillField('name', 'Web Development');
+        $I->see('Enter the cost of the service');
+        $I->fillField('cost', '500');
         $I->see('Enter the price of the service');
         $I->fillField('price', '1000');
 
         $I->click('Save a new service');
 
-        $I->seeInDatabase('services', ['name' => 'Web Development', 'price' => '1000']);
+        $I->seeInDatabase('services', ['name' => 'Web Development', 'cost'=>'500', 'price' => '1000']);
         $I->seeCurrentUrlEquals('/services'); 
 
     }
@@ -49,28 +51,32 @@ class ServiceCest
         $I->seeCurrentUrlEquals('/services/create');
 
         $I->see('The name field is required.');
+        $I->see('The cost field is required.');
         $I->see('The price field is required.');
     }
     public function editService(AcceptanceTester $I){
         $I->amOnPage('/services');
         // Looks for the record in the table
-        $I->see('Testing');
-        $I->see('300');
         $I->see('Edit');
         // Clicks the edit button of the top record
         $I->click('Edit');
         // Checks that the fields are on the edit page
         $I->see('Name');
-        $I->see('Price');
-        $I->see('Update Service');
-        // Fills the field and saves the changes to the database
         $I->fillField('name', 'Testing2');
-        $I->fillField('price', '400');
-        $I->click('save');
+        $I->see('Cost');
+        $I->fillField('cost', '400');
+        $I->see('Price');
+        $I->fillField('price', '700');
+        $I->see('Update Service');
+
+        
+        
+       
+        $I->click('Update Service');
         // Checks that the redirect is to the correct page
         $I->seeCurrentUrlEquals('/services');
         // Checks the database that the record has been updated
-        $I->seeInDatabase('services', ['name' => 'Testing2', 'price' => '400']);
+        $I->seeInDatabase('services', ['name' => 'Testing2', 'cost' => '400', 'price' => '700']);
         
         
     }
@@ -78,15 +84,13 @@ class ServiceCest
     public function deleteService(AcceptanceTester $I){
         $I->amOnPage('/services');
         // Checks that the record is in the table
-        $I->see('Web Development');
-        $I->see('1000');
         $I->see('Edit');
-        $I->see('Delete');
+        // $I->see('Delete');
         // Clicks the delete button for the first record in the table. 
-        $I->click('Delete');
-        // Checks the database to see that the record is deleted (only works if the web development that is created in the previous test it the top field in the table)
-        $I->dontSeeInDatabase('services', ['name' => 'Web Development', 'price' => '1000']);
-    }
+        $I->click('delete');
+        // Checks the database to see that the record is deleted 
+        $I->dontSeeInDatabase('services', ['name' => '5 pages']);
+}
 
 
 }

@@ -14,6 +14,7 @@ use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\ProjectsController;
 use App\Http\Controllers\ServicesController;
+use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\StaticPagesController;
 use App\Http\Controllers\RunningCostsController;
 use App\Http\Controllers\CustomerQuotesController;
@@ -64,7 +65,6 @@ Route::group(['middleware' => ['auth', 'role:admin|manager', 'permission:manage 
     Route::delete('/services/{service}/delete', [ServicesController::class, 'destroy'])->name('services.destroy');
 });
 
-
 // Quotes routes
 Route::group(['middleware' => ['auth', 'role:admin|manager', 'permission:manage quotes']], function () {
     Route::get('/quotes', [QuotesController::class, 'index'])->name('quotes.index');
@@ -102,19 +102,26 @@ Route::group(['middleware' => ['auth', 'role:admin|manager', 'permission:manage 
 // Running Costs Routes
 Route::group(['middleware' => ['auth', 'role:admin|manager', 'permission:manage running costs']], function () {
 
+
+    Route::get('/runningcosts', [RunningCostsController::class, 'index'])->name('runningcosts.index');
+
+    Route::get('/runningcosts/create', [RunningCostsController::class, 'create'])->name('runningcosts.create');
+
+    Route::post('/runningcosts', [RunningCostsController::class, 'store'])->name('runningcosts.store');
+
+    Route::put('/runningcosts/{runningcost}/edit', [RunningCostsController::class, 'edit'])->name('runningcosts.edit');
+
+    Route::put('/runningcosts/{runningcost}', [RunningCostsController::class, 'update'])->name('runningcosts.update');
+
+    Route::delete('/runningcosts/{runningcost}/delete', [RunningCostsController::class, 'destroy'])->name('runningcosts.destroy');
 });
-Route::get('/runningcosts', [RunningCostsController::class, 'index'])->middleware(['auth', 'role:admin|manager'])->name('runningcosts.index');
+// Categories routes
+Route::group(['middleware' => ['auth', 'role:admin|manager']], function () {
 
-Route::get('/runningcosts/create', [RunningCostsController::class, 'create'])->middleware(['auth', 'role:admin|manager'])->name('runningcosts.create');
-
-Route::post('/runningcosts', [RunningCostsController::class, 'store'])->middleware(['auth', 'role:admin|manager'])->name('runningcosts.store');
-
-Route::put('/runningcosts/{runningcost}/edit', [RunningCostsController::class, 'edit'])->middleware(['auth', 'role:admin|manager'])->name('runningcosts.edit');
-
-Route::put('/runningcosts/{runningcost}', [RunningCostsController::class, 'update'])->middleware(['auth', 'role:admin|manager'])->name('runningcosts.update');
-
-Route::delete('/runningcosts/{runningcost}/delete', [RunningCostsController::class, 'destroy'])->middleware(['auth', 'role:admin|manager'])->name('runningcosts.destroy');
-
+    Route::get('/categories/create', [CategoriesController::class, 'create'])->name('categories.create');
+    
+    Route::post('/categories', [CategoriesController::class, 'store'])->name('categories.store');
+});
 // Projects Routes
 Route::group(['middleware' => ['auth', 'role:admin|manager', 'permission:manage projects']], function () {
     Route::get('/projects', [ProjectsController::class, 'index'])->name('projects.index');
