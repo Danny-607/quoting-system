@@ -2,7 +2,7 @@
 @section('title', 'Projects overview')
 @section('content')
 @can('manage projects')
-
+<h1>Projects</h1>
     <h2>On Going Projects</h2>
     <table class="table">
         <thead>

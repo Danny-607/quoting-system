@@ -37,7 +37,7 @@
                 </tbody>
             </table>
         </div>
-        <div class="admin-btn">
+        <div class="btn-group">
             <a id="create-user-btn" class="create-btn btn" href="{{ route('users.create') }}">Create a new user</a>
             <a id="create-role-btn" class="create-btn btn" href="{{ route('roles.create') }}">Create a new role</a>
         </div>

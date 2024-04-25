@@ -3,7 +3,7 @@
 @section('content')
 @can('manage running costs')
     
-
+<h1>Operational Costs</h1>
 <table>
     <thead>
         <tr>
@@ -43,7 +43,10 @@
         @endforeach
     </tbody>
 </table>
+<div class="btn-group">
+    <a id="create-role-btn" class="create-btn btn" href="{{ route('categories.create') }}">Create a new category</a>
+    <a class="create-btn btn" href="{{route('runningcosts.create')}}">Add an expense</a>
+</div>
 
-<a class="create-btn btn" href="{{route('runningcosts.create')}}">Add an expense</a>
 @endcan
 @endsection

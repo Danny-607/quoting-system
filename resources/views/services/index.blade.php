@@ -2,7 +2,7 @@
 @section('title', 'Services overview')
 @section('content')
 @can('manage services')
-
+<h1>Services</h1>
 <table>
     <tr>
         <th>ID</th>
@@ -39,6 +39,9 @@
 <p>@if (session()->has('success'))
     {{ session('success') }}
 @endif</p>
+<div class="btn-group">
+    <a id="create-role-btn" class="create-btn btn" href="{{ route('categories.create') }}">Create a new category</a>
 <a class="create-btn btn " href="{{route('services.create')}}">Create a service</a>
+</div>
 @endcan
 @endsection

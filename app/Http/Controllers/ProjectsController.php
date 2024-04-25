@@ -24,7 +24,7 @@ class ProjectsController extends Controller
     
         $quote->load('services', 'user');
         $employees = Employee::all();
-        // dd($quote->load('services', 'name'));
+
         $initialData = [
             'quote_id' => $quote->id,
             'user_name' => $quote->user->first_name ?? 'N/A',
@@ -108,10 +108,9 @@ class ProjectsController extends Controller
     }
 
     public function complete(Project $project ){
-            // Set the actual end date to today (or capture it from a request if it's being set elsewhere)
     $actualEndDate = Carbon::today();
     
-    // Recalculate the labor cost
+    // Recalculate the labour cost
     $quote = $project->quote()->with('services')->firstOrFail();
     $servicesCost = $quote->services->sum('cost');
 
@@ -137,7 +136,7 @@ class ProjectsController extends Controller
         $labourCost += $totalHoursOnProject * $hourlyWage;
     }
 
-    // Update the project costs and revenues based on the recalculated labor costs
+    // Update the project costs and revenues based on the recalculated labour costs
     $projectCost = $servicesCost + $labourCost;
     $projectRevenue = $quote->preliminary_price - $projectCost;
 

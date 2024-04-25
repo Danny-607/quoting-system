@@ -4,7 +4,9 @@
 @can('manage employees')
 
     <div class="form-container">
+        
         <div class="card">
+            <h2>Edit an employee</h2>
             <form method="POST" action="{{ route('employees.update', $employee->id) }}">
                 @csrf
                 @method('PUT')
@@ -27,7 +29,7 @@
                 <label for="wages">Wages:</label>
                 <input type="decimal" id="wages" name="wage_amount" value="{{ old('wages', $employee->wage_amount) }}">
 
-                <button type="submit">Update Employee</button>
+                <button class="btn edit-btn" type="submit">Update Employee</button>
                 @if ($errors->any())
                     @foreach ($errors->all() as $error)
                         <p><strong>{{ $error }}</strong></p>

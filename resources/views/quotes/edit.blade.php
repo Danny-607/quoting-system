@@ -6,6 +6,7 @@
 
 <div class="form-container">
     <div class="card">
+        <h2>Edit quote</h2>
     <form action="{{ route('quotes.update', $quote->id) }}" method="POST">
         @csrf
         @method('PUT')
@@ -22,7 +23,7 @@
             <option value="unapproved" {{ $quote->status === 'unapproved' ? 'selected' : '' }}>Unapproved</option>
         </select>
 
-        <button class="btn save-btn" type="submit">Update Quote</button>
+        <button class="btn edit-btn" type="submit">Edit Quote</button>
         @if ($errors->any())
             @foreach ($errors->all() as $error)
                 <p><strong>{{ $error }}</strong></p>

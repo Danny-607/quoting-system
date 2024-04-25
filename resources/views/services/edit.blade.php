@@ -6,6 +6,7 @@
 
         <div class="form-container">
             <div class="card">
+                <h2>Edit a service</h2>
                 <form action="{{ route('services.update', ['service' => $service->id]) }}" method="post">
                     @csrf
                     @method('put')
@@ -30,7 +31,7 @@
                         @endforeach
                     </select>
 
-                    <button class="btn save-btn" type="submit">Update Service</button>
+                    <button class="btn edit-btn" type="submit">Update Service</button>
                     @if ($errors->any())
                         @foreach ($errors->all() as $error)
                             <p><strong>{{ $error }}</strong></p>

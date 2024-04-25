@@ -4,6 +4,7 @@
     @can('manage running costs')
         <div class="form-container">
             <div class="card">
+                <h2>Edit Running cost</h2>
                 <form action="{{ route('runningcosts.update', ['runningcost' => $runningCost->id]) }}" method="post">
                     @csrf
                     @method('put')
@@ -31,7 +32,7 @@
                     <input type="checkbox" name="repeating" id="repeating" value="1"
                         {{ $runningCost->repeating ? 'checked' : '' }}>
 
-                    <button class="btn save-btn" type="submit">Update Running Cost</button>
+                    <button class="btn edit-btn" type="submit">Update Running Cost</button>
                     @if ($errors->any())
                         @foreach ($errors->all() as $error)
                             <p><strong>{{ $error }}</strong></p>

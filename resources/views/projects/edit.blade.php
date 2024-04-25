@@ -31,7 +31,7 @@
             <option value="completed" {{ $project->status === 'completed' ? 'selected' : '' }}>Completed</option>
         </select>
 
-        <button type="submit">Update Project</button>
+        <button class="btn edit-btn" type="submit">Update Project</button>
         @if ($errors->any())
             @foreach ($errors->all() as $error)
                 <p><strong>{{ $error }}</strong></p>

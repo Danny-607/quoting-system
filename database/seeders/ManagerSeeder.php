@@ -16,7 +16,7 @@ class ManagerSeeder extends Seeder
     public function run(): void
     {
         User::create([
-            'first_name' => 'Example',
+            'first_name' => 'Manager',
             'last_name' => 'Manager',
             'phone_number' => '12345678912', 
             'email' => 'manager@manager.com',

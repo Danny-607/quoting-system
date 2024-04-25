@@ -2,7 +2,7 @@
 @section('title', 'Employees')
 @section('content')
 @can('manage employees')
-
+<h1>Employees</h1>
     <table>
         <thead>
             <tr>

@@ -2,6 +2,7 @@
 @section('title', 'Quotes overview')
 @section('content')
 @can('manage quotes')
+<h1>Quotes</h1>
 <table>
     <thead>
         <tr>
