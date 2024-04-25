@@ -108,15 +108,53 @@ class ProjectsController extends Controller
     }
 
     public function complete(Project $project ){
-        $project->update([
-            'status' => 'completed',
-            'actual_end_date' => Carbon::today()
-        ]);
-        return redirect()->back()->with('success', 'Project marked as completed.');
+            // Set the actual end date to today (or capture it from a request if it's being set elsewhere)
+    $actualEndDate = Carbon::today();
+    
+    // Recalculate the labor cost
+    $quote = $project->quote()->with('services')->firstOrFail();
+    $servicesCost = $quote->services->sum('cost');
+
+    $startDate = Carbon::parse($project->start_date);
+    $endDate = Carbon::parse($actualEndDate); // Using actual end date now
+
+    $numberOfWeeks = $startDate->diffInWeeks($endDate);
+    $diffInDays = round($startDate->diffInDays($endDate));
+
+    $labourCost = 0;
+    foreach ($project->employees as $employee) {
+        if ($employee->wage_type == "salary") {
+            $hourlyWage = $employee->wage_amount / (52 * $employee->contracted_hours);
+        } else {
+            $hourlyWage = $employee->wage_amount;
+        }
+
+        $nonWorkingDays = 7 - $employee->contracted_days;
+        $totalNonWorkingDays = $numberOfWeeks * $nonWorkingDays;
+        $totalDaysOnProject = $diffInDays - $totalNonWorkingDays;
+        $hoursPerDay = $employee->contracted_hours / $employee->contracted_days;
+        $totalHoursOnProject = $totalDaysOnProject * $hoursPerDay;
+        $labourCost += $totalHoursOnProject * $hourlyWage;
+    }
+
+    // Update the project costs and revenues based on the recalculated labor costs
+    $projectCost = $servicesCost + $labourCost;
+    $projectRevenue = $quote->preliminary_price - $projectCost;
+
+    // Update the project with the recalculated data and mark it as completed
+    $project->update([
+        'actual_end_date' => $actualEndDate,
+        'status' => 'completed',
+        'project_cost' => $projectCost,
+        'project_revenue' => $projectRevenue
+    ]);
+
+    return redirect()->back()->with('success', 'Project marked as completed and costs updated.');
     }
     
     public function destroy(Project $project){
         $project->delete();
         return redirect()->route('projects.index');
     }
+    
 }
