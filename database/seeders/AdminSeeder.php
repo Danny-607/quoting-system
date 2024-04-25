@@ -16,11 +16,12 @@ class AdminSeeder extends Seeder
     public function run(): void
     {
         User::create([
-            'name' => 'admin',
+            'first_name' => 'Example',
+            'last_name' => 'Admin',
+            'phone_number' => '12345678912', 
             'email' => 'admin@admin.com',
             'email_verified_at' => now(),
-            'password' => static::$password ??= Hash::make('password'),
-            
+            'password' => Hash::make('password'),
         ])->assignRole('admin');
     }
 }

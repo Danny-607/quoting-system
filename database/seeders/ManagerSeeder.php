@@ -16,11 +16,13 @@ class ManagerSeeder extends Seeder
     public function run(): void
     {
         User::create([
-            'name' => 'manager',
+            'first_name' => 'Manager',
+            'last_name' => 'Manager',
+            'phone_number' => '12345678912', 
             'email' => 'manager@manager.com',
             'email_verified_at' => now(),
-            'password' => static::$password ??= Hash::make('password'),
-            
+            'password' => Hash::make('password'),
         ])->assignRole('manager');
     }
+    
 }
