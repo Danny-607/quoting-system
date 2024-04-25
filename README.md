@@ -15,6 +15,8 @@ Run these commands in order to run this project:
 
 Ensure to setup your database correctly within the .env file as well as a mailing system such as mailtrap.io to allow for the mailing functionality of the project to be used.
 
+This project was built using MYSQL for the database.
+
 To run the codeception tests use this command:
 php vendor/bin/codecept run --steps
 
