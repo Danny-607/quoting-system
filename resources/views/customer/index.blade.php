@@ -8,7 +8,7 @@
             <h1>Dashboard</h1>
         </header>
 
-        <section>
+        <section class="quotes">
             <h2>Unapproved Quotes</h2>
             @foreach ($unapprovedQuotes as $quote)
                 <article class="card">
@@ -26,7 +26,7 @@
             @endforeach
         </section>
 
-        <section>
+        <section class="quotes">
             <h2>Approved Quotes</h2>
             @foreach ($approvedQuotes as $quote)
                 <article class="card">

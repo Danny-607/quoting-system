@@ -26,8 +26,4 @@ class AdminController extends Controller
 
 
     
-    public function store(Request $request){
-
-        return back()->with('success', 'Role assigned successfully!');
-    }
 }

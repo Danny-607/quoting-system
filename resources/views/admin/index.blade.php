@@ -25,7 +25,7 @@
                                 <div class="action-buttons">
                                     <a class="edit-btn btn" href="{{ Route('users.edit', $user->id) }}">Edit</a>
                                     <form method="POST" action="{{ route('users.destroy', $user->id) }}"
-                                        style="display: inline-block;">
+                                        >
                                         @csrf
                                         @method('DELETE')
                                         <button class="delete-btn btn" type="submit">Delete</button>

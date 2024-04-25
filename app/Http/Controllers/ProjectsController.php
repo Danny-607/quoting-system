@@ -105,6 +105,7 @@ class ProjectsController extends Controller
             'project_revenue' => $request->project_revenue,
             'status' => $request->status,
         ]);
+        return redirect()->route('projects.index');
     }
 
     public function complete(Project $project ){

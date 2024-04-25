@@ -151,6 +151,7 @@ Route::group(['middleware' => ['auth', 'role:admin', 'permission:manage users']]
     Route::put('/users/{id}', [UserController::class, 'update'])->name('users.update');
     
     Route::delete('/users/{id}/delete', [UserController::class, 'destroy'])->name('users.destroy');
+   
 });
 
 
