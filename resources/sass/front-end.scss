@@ -17,7 +17,7 @@ body{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     align-items: center;
-    background-color: #051735;
+    background-color: $secondary-color;
 
 }
 
@@ -102,7 +102,7 @@ button {
 
 button a {
     color: white; 
-    font-size: 36;
+    font-size: 36px;
     text-decoration: none; 
 }
 
@@ -139,7 +139,7 @@ button:hover {
 }
 
 .service-box input[type="checkbox"]:checked + .box-content {
-    background-color: #0e9b73; 
+    background-color: $accent-color; 
     color: white;
     border-color: #0056b3; 
 }
